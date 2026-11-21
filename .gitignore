@@ -1,0 +1,5 @@
+dist/
+.data/
+.env
+.sites-runtime/
+node_modules/
