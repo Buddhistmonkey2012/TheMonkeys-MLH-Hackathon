@@ -1,0 +1,1513 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#211734">
+  <meta name="description" content="TechWomen Arizona’s mentoring workspace for conversations, meetings, and career next steps.">
+  <title>TechWomen AZ · Mentoring Workspace</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTciIGZpbGw9IiNiY2E4ZmYiLz4KICA8cGF0aCBkPSJNMjQgMjIgMTMgMzJsMTEgMTBtMTYtMjAgMTEgMTAtMTEgMTBNMzYgMTlsLTggMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1MTczZiIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" type="image/svg+xml">
+  <style>
+:root {
+  color-scheme: light;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  color: #251d36;
+  background: #f7f6fa;
+  font-size: 16px;
+  --ink: #251d36;
+  --muted: #6f667b;
+  --purple: #6136b2;
+  --primary: #653bc3;
+  --line: #ece8f1;
+  --paper: #fff;
+  --sidebar: #211734;
+  --shadow: 0 2px 6px #28174007, 0 9px 25px #28174004;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 318px; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { opacity: .55; cursor: wait; }
+a { color: inherit; }
+button, a, input, textarea, select, summary { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 2px solid #8a61e4; outline-offset: 3px;
+}
+h1, h2, h3, p { margin: 0; }
+button svg, a svg { flex: none; }
+[hidden] { display: none !important; }
+.sr-only, .skip:not(:focus) { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); }
+.skip:focus { position: fixed; top: 10px; left: 10px; z-index: 12; padding: 12px; background: white; }
+.boot { height: 100dvh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; color: var(--muted); }
+.sidebar {
+  position: fixed; z-index: 4; top: 0; left: 0; bottom: 0; width: 225px;
+  display: flex; flex-direction: column; padding: 25px 17px 17px;
+  background: var(--sidebar); color: #f7f1ff;
+  border-right: 1px solid #302343;
+}
+.brand { display: flex; align-items: center; gap: 12px; padding: 0 6px 0 7px; margin-bottom: 47px; }
+.brand strong { display: block; font-weight: 730; font-size: 1.12rem; letter-spacing: -.035em; line-height: 1.05; }
+.brand span { display: block; color: #c7b4ea; font-weight: 700; font-size: .72rem; letter-spacing: .22em; margin-top: 6px; }
+.nav-label { margin: 0 0 12px 12px; color: #b7a9cb; font-size: .72rem; letter-spacing: .11em; font-weight: 700; }
+.nav-item { width: 100%; display: flex; align-items: center; text-align: left; gap: 12px; color: #ddd3ea; font-size: .94rem; font-weight: 620; padding: 12px; border: 0; border-radius: 9px; background: none; margin-bottom: 5px; }
+.nav-item svg { color: #bfaadf; }
+.nav-item:hover, .profile-switch:hover { background: #38294d; }
+.nav-item.current { background: #422c61; color: #fff; }
+.nav-item.current svg { color: #d7bcff; }
+.nav-count { margin-left: auto; background: #c9f18e; color: #253526; min-width: 22px; min-height: 22px; padding: 2px 5px; text-align: center; border-radius: 6px; font-weight: 800; font-size: .76rem; }
+.side-bottom { margin-top: auto; }
+.mode-note { padding: 12px; font-size: .79rem; font-weight: 590; color: #c7b9d9; display: flex; gap: 8px; align-items: center; }
+.mode-dot { width: 7px; height: 7px; border-radius: 50%; background: #c8e99a; }
+.profile-switch { width: 100%; cursor: pointer; background: #312343; color: #fff; padding: 9px; border: 1px solid #453457; border-radius: 11px; display: flex; gap: 9px; align-items: center; text-align: left; }
+.profile-switch > span:nth-child(2) { flex: 1; min-width: 0; }
+.profile-switch strong, .profile-switch small { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; }
+.profile-switch strong { font-size: .85rem; }
+.profile-switch small { font-size: .77rem; color: #c5b7d6; margin-top: 3px; }
+.profile-switch svg { color: #bdaed0; }
+.shell { margin-left: 225px; }
+.topbar { height: 71px; background: #fff; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; gap: 13px; }
+.crumb { display: flex; align-items: center; gap: 11px; color: var(--muted); font-size: .88rem; white-space: nowrap; }
+.crumb strong { color: var(--ink); font-weight: 700; }
+.crumb svg { color: #948aa2; }
+.top-actions { display: flex; align-items: center; gap: 13px; margin-left: auto; }
+.button {
+  display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+  padding: 9px 14px; min-height: 40px; border-radius: 8px; border: 1px solid transparent; text-decoration: none;
+  white-space: nowrap; font-size: .88rem; font-weight: 660; background: #fff; color: var(--ink);
+}
+.button.primary { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 2px 4px #54319121; }
+.button.primary:hover { background: #5431a5; border-color: #5431a5; }
+.button.outline { border-color: #e5deed; background: #fff; }
+.button.outline:hover { background: #f7f2ff; border-color: #d3c3ed; }
+.button.compact { min-height: 35px; padding: 6px 10px; }
+.button.destructive { background: #a4274c; color: white; }
+.icon-button { display: inline-grid; position: relative; place-items: center; width: 38px; height: 38px; padding: 0; border-radius: 8px; border: 1px solid transparent; background: transparent; color: #655a77; }
+.icon-button:hover { background: #f4effb; color: #5836a0; }
+.bell { border-color: #ede8f3; }
+.notification-dot { position: absolute; top: 5px; right: 6px; width: 9px; height: 9px; border-radius: 50%; background: #7750cb; border: 2px solid #fff; }
+.mobile-menu, .mobile-back, .scrim { display: none; }
+.main { padding: 27px 32px 35px; max-width: 1540px; margin: 0 auto; }
+.hero {
+  margin: 0 0 24px; position: relative; isolation: isolate; min-height: 166px; overflow: hidden;
+  display: flex; align-items: center; padding: 29px 35px;
+  background: linear-gradient(104deg,#39205e 8%,#523188 59%,#653db1 100%);
+  border-radius: 16px; color: white; box-shadow: 0 6px 15px #33205220;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-label { display: flex; align-items: center; gap: 8px; font-size: .74rem; font-weight: 760; letter-spacing: .125em; color: #e7dbff; margin-bottom: 9px; }
+.hero-label span { width: 8px; height: 8px; background: #d1ef9d; border-radius: 2px; transform: rotate(45deg); }
+.hero h1 { font-size: clamp(1.75rem,3.25vw,2.75rem); font-weight: 730; letter-spacing: -.055em; line-height: 1.06; }
+.hero p { margin-top: 12px; color: #f1e8ff; font-size: 1rem; line-height: 1.4; }
+.hero-art { position: absolute; right: 0; inset-block: 0; width: 42%; overflow: hidden; pointer-events: none; }
+.ring { position: absolute; border: 1px solid #ddd0ff52; width: 105%; height: 92%; border-radius: 50%; transform: rotate(-24deg); right: -10%; top: 10%; }
+.r2 { right: -2%; top: 1%; width: 85%; height: 88%; }
+.r3 { right: -14%; top: 12%; width: 88%; }
+.r4 { right: -30%; top: -34%; width: 78%; height: 155%; transform: rotate(29deg); opacity: .52; }
+.star { font-weight: 400; display: block; position: absolute; line-height: 1; }
+.main-star { right: 32%; top: 21%; font-size: 5.9rem; color: #d2f29f; text-shadow: 0 0 19px #d4f6a34a; }
+.small-star { right: 57%; top: 18%; font-size: 1.55rem; color: #ddcaff; }
+.tiny-star { right: 19%; bottom: 23%; font-size: 1.48rem; color: #e4d5fe; }
+.orbit-dot { position: absolute; right: 18%; top: 26%; width: 7px; height: 7px; border-radius: 50%; background: #dbc6ff; }
+.dashboard { display: grid; grid-template-columns: minmax(0,1fr) 265px; gap: 21px; align-items: start; }
+.panel { border: 1px solid #ebe6f0; border-radius: 14px; background: var(--paper); box-shadow: var(--shadow); }
+.inbox-panel { display: grid; grid-template-columns: minmax(170px, .77fr) minmax(0, 1.75fr); min-height: 550px; overflow: hidden; }
+.inbox { overflow: hidden; border-right: 1px solid var(--line); }
+.inbox-top { display: flex; align-items: center; justify-content: space-between; padding: 15px 15px 10px; }
+.inbox-top h2 { font-size: 1.16rem; letter-spacing: -.03em; }
+.inbox-add { width: 30px; height: 30px; color: #7050a2; background: #f3edfc; }
+.search-wrap { display: flex; gap: 7px; align-items: center; margin: 0 14px 10px; padding: 7px 9px; border: 1px solid #eee9f3; border-radius: 8px; color: #8a7b9e; background: #f9f7fb; }
+.search-wrap input { min-width: 0; width: 100%; outline: 0; border: 0; padding: 2px 0; background: transparent; color: var(--ink); font-size: .86rem; }
+.search-wrap:focus-within { border-color: #a48ad3; }
+.search-wrap input:focus-visible { outline: 0; }
+.search-wrap input::placeholder { color: #776d84; }
+.filter-row { display: flex; gap: 4px; margin: 0 12px 11px; }
+.filter { background: transparent; border: 1px solid transparent; border-radius: 6px; color: #756881; font-weight: 640; font-size: .82rem; padding: 6px 9px; white-space: nowrap; }
+.filter:hover { background: #f7f3fc; }
+.filter.chosen { color: #6239a6; background: #f0e7fc; }
+.thread-list { padding: 0 8px; }
+.thread-item { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: start; gap: 8px; text-align: left; width: 100%; padding: 10px 7px; border: 1px solid transparent; border-radius: 9px; color: var(--ink); background: white; margin-bottom: 2px; min-height: 63px; }
+.thread-item:hover { background: #f8f4fd; }
+.thread-item.selected { background: #f2ebfc; border-color: #ede3fb; }
+.thread-summary { min-width: 0; align-self: center; }
+.thread-summary strong { display: block; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; font-size: .85rem; letter-spacing: -.02em; }
+.thread-summary > span { display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; margin-top: 4px; font-size: .77rem; color: #766b85; }
+.thread-meta { display: flex; align-items: flex-end; flex-direction: column; gap: 8px; padding-top: 2px; font-size: .67rem; color: #736782; white-space: nowrap; }
+.thread-meta i { background: #8657d6; width: 7px; height: 7px; border-radius: 50%; }
+.avatar {
+  display: inline-grid; flex: none; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  font-weight: 780; font-size: .85rem; letter-spacing: -.04em; color: #523884; background: #e8dcfb;
+}
+.avatar.small { width: 35px; height: 35px; font-size: .76rem; }
+.avatar.tiny { width: 30px; height: 30px; font-size: .7rem; }
+.avatar.large { width: 54px; height: 54px; font-size: 1.05rem; }
+.avatar.peach { background: #fbe1d0; color: #873e32; }
+.avatar.mint { background: #d8f1e5; color: #24614c; }
+.avatar.rose { background: #f9dcea; color: #82375f; }
+.avatar.gold { background: #faeac7; color: #774e20; }
+.avatar.cluster { background: #e9defd; color: #6543a2; }
+.conversation-area { min-width: 0; }
+.conversation { height: 550px; display: grid; grid-template-rows: auto minmax(0,1fr) auto; min-width: 0; }
+.conversation-head { padding: 16px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); }
+.conversation-title { flex: 1; min-width: 0; }
+.conversation-title h3 { font-size: 1.01rem; letter-spacing: -.025em; font-weight: 730; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.conversation-title p { margin-top: 3px; color: var(--muted); font-size: .81rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.conversation-head .button { color: #63449b; }
+.message-stream { overflow: auto; padding: 0 16px 12px; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #d9cdea transparent; }
+.day-divider { display: flex; gap: 10px; align-items: center; font-size: .75rem; font-weight: 610; color: #746885; margin: 15px 0 13px; }
+.day-divider:before,.day-divider:after { content: ""; height: 1px; background: #eee9f3; flex: 1; }
+.message { display: flex; align-items: flex-end; gap: 7px; margin: 0 0 12px; }
+.message.mine { justify-content: flex-end; }
+.bubble-group { max-width: min(88%, 580px); min-width: 0; }
+.message-meta { display: flex; align-items: center; gap: 7px; margin: 0 0 4px 1px; font-size: .72rem; color: #746981; }
+.message-meta strong { color: #4b405d; font-size: .77rem; }
+.mine .message-meta { justify-content: flex-end; }
+.bubble { background: #f4f1f8; border-radius: 11px 11px 11px 3px; color: #322840; padding: 9px 11px; font-size: .89rem; line-height: 1.48; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mine .bubble { background: #eee4fd; border-radius: 11px 11px 3px 11px; color: #3f275e; }
+.composer { display: flex; padding: 12px 15px; border-top: 1px solid var(--line); align-items: center; gap: 8px; }
+.composer textarea { resize: vertical; flex: 1; min-width: 0; min-height: 42px; max-height: 135px; line-height: 1.38; border: 1px solid #eae3f0; border-radius: 8px; padding: 10px 11px; color: var(--ink); background: #fbfaff; font-size: .89rem; }
+.composer textarea::placeholder { color: #776a87; }
+.send { width: 41px; height: 41px; flex: none; display: grid; place-items: center; padding: 0; background: var(--primary); border: 0; color: #fff; border-radius: 8px; }
+.send:hover { background: #52309e; }
+.rail { display: grid; gap: 16px; }
+.rail .panel, .agenda { padding: 15px; }
+.rail-title { display: flex; align-items: center; gap: 9px; }
+.rail-title h2 { font-size: 1.04rem; font-weight: 730; letter-spacing: -.026em; }
+.tile { display: inline-grid; width: 35px; height: 35px; flex: none; place-items: center; color: #6840b1; background: #ece1fc; border-radius: 9px; }
+.tile.green { color: #385c41; background: #e4f5d6; }
+.tile.purple { color: #6e42b3; background: #ebdefc; }
+.upcoming-item { display: flex; width: 100%; align-items: flex-start; text-align: left; gap: 10px; background: transparent; color: var(--ink); border: 0; border-bottom: 1px solid #f0edf3; padding: 12px 0; }
+.upcoming-item:hover { color: #663cb0; }
+.date-tile { background: #f4effa; border: 1px solid #eee5f7; color: #633b9b; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 0 0 43px; height: 48px; gap: 2px; }
+.date-tile > span { text-transform: uppercase; font-size: .65rem; font-weight: 790; letter-spacing: .05em; }
+.date-tile strong { font-size: 1.12rem; line-height: 1; }
+.upcoming-text { min-width: 0; }
+.upcoming-text > strong, .upcoming-text > small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.upcoming-text > strong { font-size: .86rem; font-weight: 700; }
+.upcoming-text > small { margin: 4px 0 5px; color: var(--muted); font-size: .76rem; }
+.format { display: inline-flex; align-items: center; gap: 4px; border-radius: 5px; font-weight: 650; font-size: .71rem; padding: 2px 5px; background: #f0e8fc; color: #623f9b; }
+.format.in-person { background: #e4f3e1; color: #376345; }
+.text-button { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: #6238a3; padding: 0; border: 0; font-size: .86rem; font-weight: 680; text-decoration: none; }
+.text-button:hover { text-decoration: underline; }
+.calendar-link { margin-top: 12px; }
+.ai-panel { background: linear-gradient(148deg,#fbf8ff,#f7f1ff 95%); border-color: #ebe1f8; }
+.ai-panel > p { color: #6b5d7b; font-size: .87rem; line-height: 1.4; margin: 9px 0 12px; }
+.assistant-actions { display: grid; gap: 6px; }
+.assistant-actions button { display: flex; width: 100%; align-items: center; gap: 7px; padding: 7px 7px; min-height: 35px; text-align: left; background: #fff9; color: #52377d; border: 1px solid #eee5f7; border-radius: 7px; font-size: .80rem; font-weight: 640; }
+.assistant-actions button:hover { background: #ede1fa; border-color: #e5d5f5; }
+.assistant-actions button span { flex: 1; }
+.assistant-actions svg:last-child { color: #896ca9; }
+.assistant-note { margin-top: 9px; font-size: .73rem; color: #725d85; }
+.small-empty { color: var(--muted); padding: 11px; font-size: .86rem; line-height: 1.5; }
+.empty { display: grid; justify-items: center; align-content: center; gap: 10px; text-align: center; padding: 30px 14px; }
+.empty h3 { font-size: 1.08rem; }
+.empty p { font-size: .91rem; color: var(--muted); max-width: 31ch; line-height: 1.5; }
+.conversation-empty { min-height: 100%; }
+.page-lead { margin: 2px 0 23px; }
+.page-lead h1 { font-size: 2rem; font-weight: 740; letter-spacing: -.05em; }
+.page-lead p { margin-top: 6px; color: var(--muted); }
+.calendar-layout { display: grid; grid-template-columns: minmax(0, 1fr) 255px; gap: 20px; align-items: start; }
+.calendar-panel { overflow: hidden; }
+.calendar-controls { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 15px 16px 8px; }
+.calendar-controls h2 { font-size: 1.15rem; letter-spacing: -.025em; }
+.calendar-controls > div { display: flex; align-items: center; gap: 2px; }
+.calendar-filters { display: flex; gap: 6px; padding: 4px 16px 13px; }
+.weekdays, .calendar-cells { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); }
+.weekdays { color: var(--muted); background: #faf8fc; font-size: .78rem; font-weight: 650; }
+.weekdays span { padding: 9px 6px; text-align: center; }
+.calendar-cell { min-height: 92px; padding: 3px; border: 1px solid #f0edf4; border-left: 0; border-bottom: 0; min-width: 0; }
+.calendar-cell:nth-child(7n) { border-right: 0; }
+.muted-day { background: #faf9fc; color: #766c85; }
+.cell-date { width: 100%; display: flex; align-items: center; gap: 4px; text-align: left; background: none; color: inherit; border: 0; padding: 3px 3px 4px; border-radius: 5px; font-size: .84rem; }
+.cell-date span { min-width: 24px; min-height: 24px; border-radius: 6px; display: grid; place-items: center; }
+.cell-date i { color: #7043b7; display: none; }
+.today .cell-date span { background: var(--primary); color: #fff; font-weight: 700; }
+.cell-date:hover { background: #f3ecfa; }
+.event-tag { display: block; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%; padding: 4px 3px; margin-bottom: 3px; text-align: left; background: #f1e6fd; color: #5f3a99; border: 0; border-radius: 4px; font-size: .725rem; font-weight: 650; }
+.event-tag:hover { box-shadow: inset 0 0 0 1px #6d4aa0; }
+.event-tag.public-event { background: #e3f1d9; color: #375e3b; }
+.more-events { font-size: .72rem; }
+.agenda-time { color: var(--muted); margin: 8px 0 3px; font-size: .84rem; }
+.legend { display: grid; gap: 8px; margin-top: 12px; color: var(--muted); font-size: .78rem; }
+.legend > span { display: flex; align-items: center; gap: 6px; }
+.people-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
+.person-card { padding: 17px; position: relative; }
+.person-card h2 { margin-top: 10px; font-size: 1.12rem; }
+.person-card p { color: var(--muted); margin: 5px 0 13px; font-size: .89rem; min-height: 2.4em; }
+.role-pill { position: absolute; right: 12px; top: 16px; background: #f2eafd; color: #61389b; font-size: .76rem; font-weight: 680; padding: 4px 7px; border-radius: 5px; }
+dialog { border: 1px solid #eae2f2; border-radius: 15px; padding: 0; width: min(510px,calc(100vw - 24px)); max-height: calc(100dvh - 24px); box-shadow: 0 16px 90px #21153b40; color: var(--ink); background: #fff; }
+dialog::backdrop { background: #24133788; }
+.modal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px 11px; border-bottom: 1px solid var(--line); }
+.modal-head h2 { font-size: 1.15rem; letter-spacing: -.023em; overflow-wrap: anywhere; }
+.modal-head .icon-button { flex: none; }
+.dialog-form { display: grid; gap: 12px; padding: 15px 17px 17px; }
+.dialog-form p { color: var(--muted); font-size: .93rem; line-height: 1.45; }
+.dialog-form label { font-size: .87rem; font-weight: 650; color: #3b304a; display: grid; gap: 5px; min-width: 0; }
+.dialog-form input:not([type=checkbox]),.dialog-form textarea,.dialog-form select { width: 100%; min-width: 0; padding: 8px 9px; min-height: 40px; border-radius: 7px; border: 1px solid #e8deee; color: #352843; background: #fcfaff; font-size: .91rem; }
+.dialog-form textarea { resize: vertical; }
+.dialog-form select { appearance: none; padding-right: 27px; background: #fcfaff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23593d73' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 9px center / 14px no-repeat; }
+.form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.dialog-form .hint { color: var(--muted); font-weight: 500; font-size: .8rem; }
+.intake-step { display: grid; gap: 12px; }
+.intake-step h2, .match-panel h2 { font-size: 1.13rem; }
+.match-panel { padding: 18px; margin-bottom: 18px; }
+.match-panel > h2 { margin-bottom: 12px; }
+.match-panel > p { color: var(--muted); }
+.form-error { color: #9a244d !important; }
+.form-error:empty { display: none; }
+.form-actions { display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+.choices { margin: 0; max-height: 169px; overflow: auto; padding: 5px 6px; border: 1px solid #eee7f4; border-radius: 8px; min-width: 0; }
+.choices legend { font-size: .87rem; font-weight: 660; padding: 0 3px; }
+.choices .person-choice { display: flex; align-items: center; gap: 8px; padding: 5px 4px; cursor: pointer; border-radius: 6px; }
+.person-choice:hover { background: #f6f0fe; }
+.person-choice input { accent-color: var(--purple); }
+.person-choice strong,.person-choice small { display: block; }
+.person-choice small { color: var(--muted); font-size: .73rem; margin-top: 1px; }
+.guest-picker summary { color: #553778; cursor: pointer; font-size: .87rem; font-weight: 620; margin-bottom: 4px; }
+.detail-list { display: grid; gap: 10px; }
+.detail-list p { display: flex; gap: 8px; align-items: center; }
+.detail-list svg { color: #6a47a3; flex: none; }
+.event-notes,.assistant-result { background: #f8f3fe; padding: 11px 12px; border: 1px solid #efe7f7; border-radius: 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.event-links { display: flex; flex-wrap: wrap; gap: 7px; }
+.danger { color: #9b2850; margin-right: auto; }
+.reminder-line { display: flex; align-items: center; gap: 8px; }
+.reminder-line > .upcoming-item { min-width: 0; }
+.reminder-line > .text-button { white-space: nowrap; }
+.assistant-result { color: #3f3156; font-size: .94rem; line-height: 1.5; }
+.profile-header { display: flex; align-items: center; gap: 9px; }
+.profile-options { display: grid; gap: 4px; }
+.profile-options button { display: flex; align-items: center; gap: 9px; text-align: left; background: #faf7fc; color: var(--ink); border: 1px solid #efe8f5; border-radius: 7px; padding: 5px 7px; font-size: .91rem; }
+.profile-options button:hover { background: #f1e8fb; }
+.profile-options button span:nth-child(2) { flex: 1; }
+.profile-options small { display: block; color: var(--muted); font-size: .73rem; }
+.onboard { min-height: 100dvh; padding: 20px; display: grid; place-items: center; }
+.onboard-card { width: min(100%,460px); padding: 21px; }
+.onboard-card h1 { margin: 7px 0; font-size: 1.45rem; letter-spacing: -.04em; }
+.onboard-card p { margin-bottom: 9px; color: var(--muted); line-height: 1.5; }
+.onboard-card .dialog-form { padding: 8px 0; }
+.auth-shell { min-height: 100dvh; display: grid; grid-template-columns: minmax(330px,.92fr) minmax(0,1.08fr); background: #fbf9fd; }
+.auth-story { min-height: 100%; position: relative; isolation: isolate; overflow: hidden; padding: clamp(25px,5.2vw,76px); display: flex; flex-direction: column; background: linear-gradient(145deg,#271942 6%,#432569 65%,#5e38a6); color: #fff; }
+.auth-story .brand { position: relative; z-index: 1; padding: 0; margin: 0; }
+.auth-story-text { z-index: 1; position: relative; margin: auto 0; padding: 40px 0 30px; }
+.auth-story-text h2 { font-size: clamp(2.4rem,5.3vw,5.2rem); line-height: .99; font-weight: 740; letter-spacing: -.062em; }
+.auth-story-text p { margin-top: 18px; max-width: 32ch; line-height: 1.55; color: #eee3ff; }
+.auth-story .hero-art { width: 108%; height: 62%; top: auto; right: -23%; bottom: -19%; opacity: .7; }
+.auth-story .main-star { font-size: clamp(3.5rem,9vw,8rem); right: 34%; }
+.auth-main { min-width: 0; display: grid; align-items: center; justify-items: center; padding: 38px 20px; }
+.auth-card { background: #fff; border: 1px solid #ebe5f1; border-radius: 17px; box-shadow: 0 8px 32px #3424510d; padding: clamp(21px,3.3vw,40px); width: min(100%,456px); }
+.auth-card h1 { font-size: clamp(1.69rem,2.8vw,2.17rem); letter-spacing: -.045em; line-height: 1.09; }
+.auth-subtitle { margin-top: 9px; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+.auth-methods { margin-top: 21px; }
+.google-button { width: 100%; min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #847b8d; border-radius: 8px; padding: 9px 12px; background: #fff; color: #262331; text-decoration: none; font-size: .91rem; font-weight: 600; }
+.google-button:hover { background: #f7f4fb; }
+.google-connected { display: flex; align-items: center; gap: 7px; }
+.google-connected svg { color: #386447; }
+.auth-divider { display: flex; align-items: center; gap: 11px; margin: 15px 0; font-size: .8rem; color: var(--muted); white-space: nowrap; }
+.auth-divider::before,.auth-divider::after { content: ""; height: 1px; flex: 1; background: #ece7f2; }
+.auth-form { padding: 0; }
+.auth-form .primary { min-height: 42px; margin-top: 3px; }
+.auth-toggle { margin-top: 17px; color: var(--muted); text-align: center; font-size: .88rem; }
+.auth-demo { display: flex; margin: 14px auto 0; justify-content: center; }
+@media (max-width: 690px) {
+  .auth-shell { grid-template-columns: 1fr; }
+  .auth-story { padding: 17px 20px; }
+  .auth-story-text,.auth-story .hero-art { display: none; }
+  .auth-main { padding: 24px 14px 32px; align-items: start; }
+}
+#toast { position: fixed; z-index: 20; right: 17px; bottom: 17px; max-width: min(85vw,360px); padding: 10px 13px; border-radius: 8px; background: #35214e; color: white; font-size: .91rem; box-shadow: 0 6px 21px #21163442; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .15s, transform .15s; }
+#toast.shown { opacity: 1; transform: none; }
+@media (min-width: 1500px) {
+  .dashboard { grid-template-columns: minmax(0,1fr) 285px; }
+  .inbox-panel { grid-template-columns: 245px minmax(0,1fr); }
+}
+@media (max-width: 1180px) {
+  .sidebar { width: 191px; padding-inline: 13px; }
+  .shell { margin-left: 191px; }
+  .main,.topbar { padding-inline: 21px; }
+  .dashboard { grid-template-columns: minmax(0,1fr) 225px; gap: 13px; }
+  .thread-meta time { display: none; }
+  .inbox-panel { grid-template-columns: minmax(150px,.7fr) minmax(0,1.5fr); }
+}
+@media (max-width: 990px) {
+  .dashboard { grid-template-columns: 1fr; }
+  .dashboard .rail { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .inbox-panel { grid-template-columns: minmax(180px,.65fr) minmax(0,1.7fr); }
+  .thread-meta time { display: block; }
+  .calendar-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .sidebar { width: 225px; visibility: hidden; transform: translateX(-100%); transition: transform .16s ease; }
+  .sidebar.revealed { visibility: visible; transform: none; }
+  .scrim { display: block; position: fixed; z-index: 3; inset: 0; width: 100%; height: 100%; background: #24133780; border: 0; }
+  .shell { margin-left: 0; }
+  .mobile-menu,.mobile-back { display: inline-grid; flex: none; }
+  .topbar { height: 59px; padding-inline: 12px; gap: 5px; }
+  .top-actions { gap: 6px; }
+  .main { padding: 14px 12px 20px; }
+  .hero { min-height: 144px; padding: 21px; margin-bottom: 13px; }
+  .hero p { max-width: 30ch; }
+  .hero-art { width: 40%; opacity: .65; }
+  .main-star { font-size: 3.6rem; right: 19%; }
+  .inbox-panel { grid-template-columns: 1fr; min-height: 0; }
+  .inbox { border-right: 0; padding-bottom: 8px; }
+  .thread-item { padding: 8px; min-height: 53px; }
+  .inbox-panel:not(.thread-open) .conversation-area, .inbox-panel.thread-open .inbox { display: none; }
+  .conversation { height: min(515px,75dvh); min-height: 380px; }
+  .conversation-head { padding: 9px; gap: 6px; }
+  .mobile-back { width: 28px; }
+  .people-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+}
+@media (max-width: 450px) {
+  .crumb span,.crumb svg { display: none; }
+  .topbar .button { min-height: 36px; padding: 6px 8px; }
+  .dashboard .rail { grid-template-columns: 1fr; }
+  .hero-art { opacity: .37; }
+  .calendar-cell { min-height: 52px; }
+  .calendar-cell .event-tag, .calendar-cell .more-events { display: none; }
+  .cell-date { flex-direction: column; min-height: 44px; padding: 0; }
+  .cell-date i { display: inline-block; font-style: normal; line-height: .55; }
+  .page-lead p { font-size: .93rem; }
+  .event-links .button { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+
+</style>
+  <script type="module">
+function mentorMatches(profile, people) {
+  if (profile?.role !== 'Mentee' || !profile.intake?.story) return [];
+  const topics = {
+    'Software development': /\b(coding|programming|software|web development|frontend|backend|javascript|python|app development)\b/i,
+    'Data and analytics': /\b(analytics|data science|data analysis|sql|statistics|business intelligence)\b/i,
+    'AI and machine learning': /\b(ai|artificial intelligence|machine learning|generative ai|llms?)\b/i,
+    Cybersecurity: /\b(cybersecurity|information security|network security|security engineering)\b/i,
+    'User experience': /\b(ux|user experience|user research|usability|product design|figma)\b/i,
+    'Product management': /\b(product management|product manager|product strategy|product owner)\b/i,
+    'Cloud and infrastructure': /\b(cloud|devops|aws|azure|kubernetes|infrastructure)\b/i,
+    Healthcare: /\b(healthcare|health care|medicine|nursing|health tech|clinical)\b/i,
+    Education: /\b(education|teaching|edtech|teacher)\b/i,
+    Entrepreneurship: /\b(entrepreneurship|startups?|small business|founder)\b/i,
+    Accessibility: /\b(accessibility|assistive technology|inclusive design)\b/i,
+    Psychology: /\b(psychology|behavioral science|cognitive science)\b/i,
+    'Creative media': /\b(drawing|illustration|photography|animation|graphic design|video editing)\b/i,
+    'Games': /\b(game development|game design|video games|unity|unreal engine)\b/i,
+    'Climate and sustainability': /\b(climate|sustainability|renewable energy|environmental science)\b/i,
+    'Finance and business': /\b(finance|accounting|fintech|economics|business administration)\b/i,
+    Robotics: /\b(robotics|electronics|embedded systems|arduino)\b/i,
+  };
+  const stop = new Set('about after already and because been before being could currently experience first from goals have help into interested interests learn learning like mentor mentoring myself online other people person really should some story tech technology their them then they things this through want wanted when where which while with work working would years also career group groups one on meet looking background share help build building enjoy'.split(' '));
+  const terms = text => new Set((text.toLowerCase().match(/[a-z][a-z0-9]{3,}/g) || []).filter(word => !stop.has(word)));
+  const textOf = p => [p.focus,p.intake?.story].filter(Boolean).join(' ');
+  const story = textOf(profile);
+  const ownTerms = terms(story);
+  return people.filter(p => p.id !== profile.id && p.username && p.role === 'Mentor').map(p => {
+    const text = textOf(p);
+    const shared = Object.entries(topics).filter(([,pattern]) => pattern.test(story) && pattern.test(text)).map(([name]) => name);
+    const exact = [...terms(p.focus || '')].filter(term => ownTerms.has(term));
+    const common = shared.length ? shared : exact.length >= 2 ? exact.slice(0,4) : [];
+    const preferences = [];
+    if (profile.intake.style === p.intake?.style) preferences.push(profile.intake.style);
+    if (profile.intake.format === p.intake?.format) preferences.push(profile.intake.format);
+    return {id:p.id,common,preferences,score:shared.length * 8 + Math.min(exact.length,4) + preferences.length};
+  }).filter(match => match.common.length).sort((a,b) => b.score-a.score).slice(0,6);
+}
+globalThis.techWomenDemo = (function createOfflineApi(fixture, suggestions, storage, matches = () => []) {
+  const storageKey = 'techwomen-az.demo.v1';
+  const dateOffset = Date.now() - fixture.createdAt;
+  const initial = structuredClone(fixture);
+  for (const thread of initial.threads) {
+    for (const message of thread.messages) message.created_at += dateOffset;
+    for (const id of Object.keys(thread.read)) if (thread.read[id]) thread.read[id] += dateOffset;
+    thread.updated_at += dateOffset;
+  }
+  for (const event of initial.events) {
+    event.starts_at += dateOffset;
+    event.ends_at += dateOffset;
+  }
+  let data = initial;
+  function read() {
+    try {
+      const stored = JSON.parse((storage || globalThis.localStorage).getItem(storageKey));
+      if (!stored) return;
+      const people = stored.people.filter(p => p.isDemoAccount);
+      const ids = new Set(people.map(p => p.id));
+      data = {...stored,people,threads:stored.threads.filter(t => t.members.every(id => ids.has(id))),
+        events:stored.events.filter(e => ids.has(e.owner_id)).map(e => ({...e,guests:e.guests.filter(id => ids.has(id))}))};
+    } catch {}
+  }
+  function save() {
+    try { (storage || globalThis.localStorage).setItem(storageKey,JSON.stringify(data)); } catch {}
+  }
+  function required(value, message) {
+    if (!value) throw new Error(message);
+    return value;
+  }
+  async function request(user, route, body = {}, params = {}) {
+    read();
+    if (route === 'demo-accounts') return {accounts:data.people.map(({id,name,role,username}) => ({id,name,role,username}))};
+    const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
+    if (route === 'demo-sign-in') {
+      const account = data.people.find(p => p.id === body.person);
+      required(account && email && (!account.email || email === account.email),'Enter the sample email for this account.');
+      if (!account.email) {
+        required(!data.people.some(p => p.email === email),'That sample email is already in use.');
+        account.email = email;
+        save();
+      }
+      return {id:account.id};
+    }
+    if (route === 'demo-register') {
+      const name = required(typeof body.name === 'string' && body.name.trim().slice(0,60),'Enter a display name.');
+      const role = ['Mentor','Mentee'].includes(body.role) ? body.role : 'Mentee';
+      const username = String(body.username || '').trim().toLowerCase();
+      required(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email),'Enter a sample email address.');
+      required(!data.people.some(p => p.email === email),'That sample email is already in use.');
+      required(/^[a-z0-9_]{3,24}$/.test(username),'Use 3–24 letters, numbers, or underscores for your username.');
+      required(!data.people.some(p => p.username === username),'That username is already taken.');
+      const id = crypto.randomUUID();
+      data.people.push({id,name,username,email,role,focus:'',color:'lilac',isDemoAccount:true});
+      save();
+      return {id};
+    }
+    const profile = required(data.people.find(p => p.id === user),'Choose a demo profile.');
+    if (route === 'profile') {
+      const username = String(body.username || '').trim().toLowerCase();
+      required(/^[a-z0-9_]{3,24}$/.test(username),'Use 3–24 letters, numbers, or underscores for your username.');
+      required(!data.people.some(p => p.id !== user && p.username === username),'That username is already taken.');
+      Object.assign(profile,{username,name:body.name,role:body.role,focus:body.focus});
+      profile.intake = {preferred:body.preferred,style:body.style,format:body.format,story:body.story};
+      save();
+      return {saved:true};
+    }
+    const memberThreads = data.threads.filter(t => t.members.includes(user));
+    const attending = e => e.owner_id === user || e.guests.includes(user);
+    const now = Date.now();
+    const thread = memberThreads.find(t => t.id === (params.id || body.thread));
+    if (route === 'state') {
+      return structuredClone({
+        profile,people:data.people.map(({intake,email,...p}) => ({...p,name:intake?.preferred || p.name})),
+        matches:matches(profile,data.people),ai:false,signedIn:{name:'Local demo',demoOnly:true},
+        threads: memberThreads.map(t => ({
+          id:t.id,title:t.title,updated_at:t.updated_at,members:t.members,preview:t.messages.at(-1)?.body,
+          unread:t.messages.filter(m => m.author_id !== user && m.created_at > (t.read[user] || 0)).length,
+        })).sort((a,b) => b.updated_at - a.updated_at),
+        events:data.events.filter(e => e.visibility === 'Public' || attending(e))
+          .map(e => attending(e) ? e : {...e,guests:[]}).sort((a,b) => a.starts_at - b.starts_at),
+        readReminders:data.readReminders[user] || [],
+      });
+    }
+    if (route === 'thread') return {messages:structuredClone(required(thread,'Conversation not found.').messages.slice(-200))};
+    if (route === 'assistant') return {text:suggestions(required(thread,'Conversation not found.').messages,data.people,body.task),source:'template'};
+    if (route === 'send' || route === 'read') {
+      required(thread,'Conversation not found.');
+      if (route === 'read') thread.read[user] = Math.max(thread.read[user] || 0, Math.min(body.through,now));
+      else if (!thread.messages.some(m => m.id === body.id)) {
+        thread.messages.push({id:body.id,author_id:user,body:required(body.message.trim(),'Enter a message.'),created_at:now});
+        thread.updated_at = now;
+      }
+      save();
+      return {saved:true};
+    }
+    if (route === 'new-thread') {
+      const members = [...new Set([user,...body.people])];
+      const roles = members.map(id => data.people.find(p => p.id === id)?.role);
+      required(roles.includes('Mentor') && roles.includes('Mentee'),'Include at least one mentor and one mentee.');
+      const title = (body.title || '').trim();
+      required(members.length < 3 || title,'Give your group conversation a name.');
+      const existing = memberThreads.find(t => t.id === body.requestId
+        || (members.length === 2 && t.members.length === 2 && members.every(id => t.members.includes(id))));
+      if (existing) return {id:existing.id};
+      const id = body.requestId || crypto.randomUUID();
+      data.threads.push({id,title,members,updated_at:now,messages:[],read:{}});
+      save();
+      return {id};
+    }
+    if (route === 'event') {
+      const id = body.id || body.requestId || crypto.randomUUID();
+      const owner = body.id ? required(data.events.find(e => e.id === id && e.owner_id === user),'Meeting not found.') : null;
+      required(body.title.trim() && Number.isFinite(body.starts_at) && body.ends_at > body.starts_at,'Enter a title and an end time after the start.');
+      if (body.format === 'Online' && body.location.trim()) {
+        let link;
+        try { link = new URL(body.location.trim()); } catch {}
+        required(link?.protocol === 'https:', 'Enter an online meeting link starting with https://.');
+      }
+      const event = {
+        id,owner_id:user,title:body.title.trim(),starts_at:body.starts_at,ends_at:body.ends_at,
+        visibility:body.visibility,format:body.format,location:body.location.trim(),notes:(body.notes || '').trim(),
+        guests:body.guests,reminder:body.reminder,
+      };
+      if (owner) data.events[data.events.indexOf(owner)] = event;
+      else if (!data.events.some(e => e.id === id)) data.events.push(event);
+      for (const person of Object.keys(data.readReminders)) data.readReminders[person] = data.readReminders[person].filter(value => value !== id);
+      save();
+      return {id};
+    }
+    if (route === 'delete-event' || route === 'dismiss') {
+      const e = required(data.events.find(item => item.id === body.id && (route === 'dismiss' ? attending(item) : item.owner_id === user)),'Meeting not found.');
+      if (route === 'dismiss') data.readReminders[user] = [...new Set([...(data.readReminders[user] || []),e.id])];
+      else data.events = data.events.filter(item => item.id !== e.id);
+      save();
+      return {saved:true};
+    }
+    throw new Error('This action is available in the hosted workspace.');
+  }
+  return request;
+})({"createdAt":1795284177760,"people":[],"threads":[],"events":[],"readReminders":{}},(function builtInSuggestions(messages, people, task) {
+  const recent = messages.slice(-4);
+  if (!recent.length) return 'Start the conversation by sharing one goal or question to discuss.';
+  if (task === 'reply') return 'Thanks for the guidance! I’ll work on the next step we discussed and share an update before our next check-in.';
+  if (task === 'summary') return recent.map(m => (people.find(p => p.id === m.author_id)?.name || 'Member') + ' · ' + m.body).join('\n\n');
+  return 'Pick one concrete next step from this conversation. Agree on who will do it, then schedule a follow-up to review progress.';
+}),undefined,mentorMatches);
+const paths = {
+  messages:'<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 4a8.4 8.4 0 0 1 3.8-.9h.5A8.5 8.5 0 0 1 21 11v.5Z"/><path d="M9 12h7"/>',
+  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18m-13 5h3m3 0h2"/>',
+  users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/><circle cx="9" cy="7" r="4"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  chevron:'<path d="m9 18 6-6-6-6"/>',
+  down:'<path d="m6 9 6 6 6-6"/>',
+  left:'<path d="m15 18-6-6 6-6"/>',
+  bell:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 10h18c0-2-3-3-3-10m-11 13a2 2 0 0 0 4 0"/>',
+  search:'<circle cx="10.8" cy="10.8" r="5.8"/><path d="m16 16 4 4"/>',
+  video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/>',
+  pin:'<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+  send:'<path d="m22 2-7 20-4-9-9-4Zm0 0L11 13"/>',
+  sparkles:'<path d="M12 2 9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5L12 2Zm7 1v4m-2-2h4"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a18 18 0 0 1 0 18 18 18 0 0 1 0-18Z"/>',
+  check:'<path d="m5 12 4 4L19 6"/>',
+  close:'<path d="m6 6 12 12M18 6 6 18"/>',
+  edit:'<path d="m16 4 4 4M4 20l4-.8L21 6l-3-3L5 16Z"/>',
+  download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/>',
+  copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 4H6a2 2 0 0 0-2 2v10"/>',
+  menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
+  inbox:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 13h5l2 3h4l2-3h5"/>',
+  dots:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+};
+const icon = (name, size = 20) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || ''}</svg>`;
+
+const googleMark = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 48 48"><path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.1v5.1h6.6c3.9-3.6 6.1-8.8 6.1-14.9z"/><path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.6l-6.6-5.1c-1.8 1.2-4.2 1.9-6.9 1.9-5.3 0-9.8-3.6-11.4-8.4H5.8V33A20 20 0 0 0 24 44z"/><path fill="#FBBC05" d="M12.6 27.8a12 12 0 0 1 0-7.6V15H5.8a20 20 0 0 0 0 18z"/><path fill="#EA4335" d="M24 11.8c3 0 5.7 1 7.8 3.1l5.8-5.8A19.2 19.2 0 0 0 24 4 20 20 0 0 0 5.8 15l6.8 5.2c1.6-4.8 6.1-8.4 11.4-8.4z"/></svg>';
+
+function googleButton(available, link = false) {
+  const text = link ? 'Connect Google account' : 'Continue with Google';
+  if (available) return `<a class="google-button" href="/auth/google${link ? '?link=1' : ''}" target="_top">${googleMark}${text}</a>`;
+  return `<button class="google-button" type="button" data-action="google-info">${googleMark}${text}</button>`;
+}
+
+function accountScreen({offline,kind,accounts,available,notice},esc) {
+  const create = kind === 'register';
+  const heading = create ? 'Create your account' : 'Sign in';
+  const subtitle = offline
+    ? 'Create a profile to try the workspace. Your accounts stay in this browser.'
+    : create ? 'Join TechWomen AZ’s mentoring workspace.' : 'Welcome back to TechWomen AZ.';
+  const email = '<label>Email address<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com"></label>';
+  const password = create
+    ? '<label>Password<input type="password" name="password" minlength="12" maxlength="128" required aria-describedby="password-hint" autocomplete="new-password"><span class="hint" id="password-hint">Use at least 12 characters.</span></label>'
+    : '<label>Password<input type="password" name="password" maxlength="128" required autocomplete="current-password"></label>';
+  const name = '<label>Full name<input name="name" maxlength="60" autocomplete="name" required placeholder="Your name"></label>';
+  const demoName = '<label>Display name<input name="name" maxlength="60" autocomplete="off" required placeholder="e.g. Alex Rivera"></label>';
+  const role = '<label>I’m joining as a<select name="role"><option>Mentee</option><option>Mentor</option></select></label>';
+  const saved = '<label>Demo account<select name="person" required><option value="">Choose an account</option>' +
+    accounts.map(p => `<option value="${esc(p.id)}">${esc(p.name)} · ${esc(p.role)}</option>`).join('') + '</select></label>';
+  const preferred = '<label>What would you like to be called?<input name="preferred" required maxlength="60" autocomplete="nickname"></label>';
+  const demoEmail = '<label>Sample email address<input name="email" type="email" maxlength="254" required placeholder="you@example.com"></label>';
+  const fields = offline ? create ? demoName + preferred + demoEmail + '<label>Username<input name="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" required placeholder="e.g. alex_r"></label>' + role : saved + demoEmail : (create ? name + preferred : '') + email + password;
+  return `<main class="auth-shell" id="main">
+    <div class="auth-story">
+      <div class="brand"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTciIGZpbGw9IiNiY2E4ZmYiLz4KICA8cGF0aCBkPSJNMjQgMjIgMTMgMzJsMTEgMTBtMTYtMjAgMTEgMTAtMTEgMTBNMzYgMTlsLTggMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1MTczZiIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" alt="" width="43" height="43"><div><strong>TechWomen</strong><span>ARIZONA</span></div></div>
+      <div class="auth-story-text"><h2>Find your path<br>into tech.</h2><p>Connect with mentors, build a plan, and make time for your next step.</p></div>
+      <div class="hero-art" aria-hidden="true"><i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i><b class="star main-star">✦</b><b class="star small-star">✦</b><i class="orbit-dot"></i></div>
+    </div>
+    <section class="auth-main" aria-labelledby="auth-title"><div class="auth-card">
+      <h1 id="auth-title" tabindex="-1">${heading}</h1><p class="auth-subtitle">${subtitle}</p>
+      <div class="auth-methods">${googleButton(available)}</div>
+      <div class="auth-divider"><span>${offline ? 'or try a demo account' : 'or use your email'}</span></div>
+      <form id="account-form" class="dialog-form auth-form" data-kind="${kind}">
+        ${fields}
+        <p class="form-error" role="alert">${esc(notice)}</p>
+        <button class="button primary" type="submit" ${offline && !create && accounts.length === 0 ? 'disabled' : ''}>${create ? 'Create account' : 'Sign in'}</button>
+      </form>
+      <p class="auth-toggle">${create ? 'Already have an account?' : 'New to TechWomen AZ?'} <button class="text-button" type="button" data-action="account-switch" data-id="${create ? 'sign-in' : 'register'}">${create ? 'Sign in' : 'Create an account'}</button></p>
+    </div></section>
+  </main>`;
+}
+
+
+const app = document.querySelector('#app');
+const modal = document.querySelector('#modal');
+const toastNode = document.querySelector('#toast');
+const demoApi = globalThis.techWomenDemo;
+const storage = {
+  get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+  set(key,value) { try { localStorage.setItem(key,value); } catch {} },
+};
+const pages = {messages:'Messages', calendar:'Calendar', people:'People'};
+const state = {
+  page:'messages', mode:demoApi ? 'demo' : 'live', as:'',
+  data:null, active:null, messages:[], filter:'', messageFilter:'all', calendar:'all',
+  month:new Date(new Date().getFullYear(),new Date().getMonth(),1), mobileThread:false,
+  drafts:new Map(), loadingThread:false, menu:false,
+  auth:null, accountKind:'sign-in', accountNotice:'', savedDemoAccounts:[],
+};
+const googleNotices = {
+  google_setup:'Google sign-in is waiting for server setup.',
+  google_retry:'Google sign-in could not finish. Please try again.',
+  google_cancelled:'Google sign-in was cancelled.',
+  google_connected:'Your Google account is connected.',
+  google_in_use:'That Google account is already connected to another workspace account.',
+  google_email_mismatch:'Choose the Google account with the same email as your workspace account.',
+  link_existing:'Sign in with your password first, then choose Connect Google account in your profile.',
+  sign_in_first:'Sign in to your workspace before connecting Google.',
+  try_later:'Too many sign-in attempts. Try again in a few minutes.',
+};
+const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const attr = esc;
+const fmt = (value, options) => new Intl.DateTimeFormat('en-US', options).format(new Date(value));
+const shortTime = value => fmt(value,{hour:'numeric',minute:'2-digit'});
+const dayText = value => fmt(value,{weekday:'short',month:'short',day:'numeric'});
+const dayKey = value => fmt(value,{year:'numeric',month:'2-digit',day:'2-digit'});
+const timezone = () => fmt(Date.now(),{timeZoneName:'short'}).split(', ').pop().split(' ').pop();
+const pById = id => state.data?.people.find(p => p.id === id);
+const activeThread = () => state.data?.threads.find(t => t.id === state.active);
+const mine = () => state.data?.profile;
+const firstName = name => name?.trim().split(/\s+/)[0] || 'there';
+const isAttending = event => event.owner_id === mine()?.id || event.guests.includes(mine()?.id);
+const dueReminders = () => (state.data?.events || []).filter(e => isAttending(e) && e.reminder > 0
+  && e.starts_at - e.reminder * 60000 <= Date.now() && e.ends_at >= Date.now() && !state.data.readReminders.includes(e.id));
+const upcoming = () => (state.data?.events || []).filter(e => e.starts_at >= Date.now() && (isAttending(e) || e.visibility === 'Public'));
+const names = t => t.members.filter(id => id !== mine()?.id).map(id => pById(id)?.name || 'Member');
+const titleOf = t => t.title || names(t).join(', ') || 'Conversation';
+const colors = ['lilac','mint','peach','rose','gold'];
+const avatar = (person, size = '') => {
+  const initials = String(person?.name || '?').split(/\s+/).slice(0,2).map(part => part[0]).join('').toUpperCase();
+  return `<span class="avatar ${colors.includes(person?.color) ? person.color : 'lilac'} ${size}" aria-hidden="true">${esc(initials)}</span>`;
+};
+const threadAvatar = (thread, size) => thread.members.length > 2
+  ? `<span class="avatar cluster ${size || ''}">${icon('users',18)}</span>`
+  : avatar(pById(thread.members.find(id => id !== mine()?.id)), size);
+const compactDate = date => dayKey(date) === dayKey(Date.now()) ? shortTime(date) : fmt(date,{month:'short',day:'numeric'});
+const iconButton = (name, label, action, extra = '') =>
+  `<button type="button" class="icon-button ${extra}" aria-label="${attr(label)}" title="${attr(label)}" data-action="${action}">${icon(name)}</button>`;
+
+async function api(route, body, parameters = {}) {
+  if (demoApi) return demoApi(state.as,route,body,parameters);
+  const query = new URLSearchParams({mode:state.mode,as:state.as,...parameters});
+  const response = await fetch('/api/' + route + '?' + query, body === undefined ? {} : {
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    const error = new Error(data.error || 'Something went wrong.');
+    error.status = response.status;
+    throw error;
+  }
+  return data;
+}
+
+async function authPost(action, body = {}) {
+  const response = await fetch('/auth/' + action,{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),
+  });
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.error || 'The account request could not be completed.');
+  return result;
+}
+async function getAuthStatus() {
+  const response = await fetch('/auth/status');
+  if (!response.ok) return null;
+  const data = await response.json();
+  return data.accounts ? data : null;
+}
+async function renderAccountGate(focus = false) {
+  if (state.auth.offline) {
+    const result = await demoApi(null,'demo-accounts');
+    state.savedDemoAccounts = result.accounts;
+  }
+  app.innerHTML = accountScreen({
+    offline:state.auth.offline,kind:state.accountKind,accounts:state.savedDemoAccounts,
+    available:state.auth.googleAvailable,notice:state.accountNotice,
+  },esc);
+  if (focus) document.querySelector('#auth-title')?.focus();
+}
+async function openDemoAccount(person) {
+  storage.set('tw.demo.session',person);
+  state.auth.signedIn = true;
+  await changeWorkspace('demo',person);
+}
+async function accountSignOut() {
+  if (state.auth.offline) storage.set('tw.demo.session','');
+  else await authPost('sign-out');
+  refreshCount++;
+  Object.assign(state,{auth:{...state.auth,signedIn:false},data:null,active:null,messages:[],drafts:new Map(),accountKind:'sign-in',accountNotice:''});
+  if (modal.open) modal.close();
+  await renderAccountGate(true);
+}
+
+let toastTimer;
+function toast(message) {
+  toastNode.textContent = message;
+  toastNode.classList.add('shown');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastNode.classList.remove('shown'),4000);
+}
+let refreshCount = 0;
+async function refresh({full = false} = {}) {
+  const count = ++refreshCount;
+  const next = await api('state');
+  if (count !== refreshCount) return;
+  const changed = JSON.stringify(state.data) !== JSON.stringify(next);
+  state.data = next;
+  if (!state.data.threads.some(t => t.id === state.active)) state.active = state.data.threads[0]?.id || null;
+  if (full) render();
+  else if (changed && state.page === 'messages') updateInbox();
+  else if (changed && !modal.open) render();
+  updateBadges();
+}
+async function loadMessages({mark = true, forceBottom = false} = {}) {
+  const id = state.active;
+  const viewIdentifier = state.mode + state.as;
+  if (!id || state.page !== 'messages') return;
+  const data = await api('thread',undefined,{id});
+  if (state.active !== id || state.mode + state.as !== viewIdentifier) return;
+  const changed = JSON.stringify(state.messages) !== JSON.stringify(data.messages);
+  state.loadingThread = false;
+  state.messages = data.messages;
+  if (changed || forceBottom) updateMessages(forceBottom);
+  const latest = data.messages.at(-1);
+  if (mark && latest && activeThread()?.unread) {
+    await api('read',{thread:id, through:latest.created_at});
+    if (state.active === id && activeThread()) {
+      activeThread().unread = 0;
+      updateInbox();
+      updateBadges();
+    }
+  }
+}
+function updateBadges() {
+  const bell = document.querySelector('#bell');
+  if (bell) {
+    const count = dueReminders().length;
+    bell.querySelector('.notification-dot').hidden = !count;
+    bell.setAttribute('aria-label', count ? 'Reminders, ' + count + ' unread' : 'Reminders');
+  }
+  const badge = document.querySelector('#nav-unread');
+  if (badge) {
+    badge.textContent = state.data.threads.filter(t => t.unread).length;
+    badge.hidden = badge.textContent === '0';
+  }
+}
+
+function sidebar() {
+  return `<aside class="sidebar ${state.menu ? 'revealed' : ''}">
+    <div class="brand"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTciIGZpbGw9IiNiY2E4ZmYiLz4KICA8cGF0aCBkPSJNMjQgMjIgMTMgMzJsMTEgMTBtMTYtMjAgMTEgMTAtMTEgMTBNMzYgMTlsLTggMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1MTczZiIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" alt="" width="43" height="43"><div><strong>TechWomen</strong><span>ARIZONA</span></div></div>
+    <nav aria-label="Workspace">
+      <p class="nav-label">WORKSPACE</p>
+      ${Object.entries(pages).map(([key,label]) => `<button class="nav-item ${state.page === key ? 'current' : ''}" type="button" data-action="page" data-id="${key}" ${state.page === key ? 'aria-current="page"' : ''}>${icon(key === 'people' ? 'users' : key)}<span>${label}</span>${key === 'messages' ? '<span class="nav-count" id="nav-unread" hidden></span>' : ''}</button>`).join('')}
+    </nav>
+    <div class="side-bottom">
+      ${state.mode === 'demo' ? '<div class="mode-note"><span class="mode-dot"></span> ' + (mine().isDemoAccount ? 'Demo account' : 'Demo workspace') + '</div>' : ''}
+      <button class="profile-switch" type="button" data-action="profile-menu">
+        ${avatar(mine(),'small')}<span><strong>${esc(mine().name)}</strong><small>${esc(mine().role)}</small></span>${icon('dots',18)}
+      </button>
+    </div>
+  </aside>`;
+}
+function header() {
+  return `<header class="topbar">
+    ${iconButton('menu','Open workspace navigation','menu','mobile-menu')}
+    <div class="crumb"><span>Workspace</span>${icon('chevron',14)}<strong>${pages[state.page]}</strong></div>
+    <div class="top-actions">
+      <button id="bell" class="icon-button bell" type="button" data-action="reminders" aria-label="Reminders" title="Reminders">${icon('bell')}<span class="notification-dot" hidden></span></button>
+      ${state.page === 'messages' ? '<button class="button primary" type="button" data-action="new-thread">' + icon('plus',17) + '<span>New message</span></button>' : ''}
+      ${state.page === 'calendar' ? '<button class="button primary" type="button" data-action="event-new">' + icon('plus',17) + '<span>New event</span></button>' : ''}
+    </div>
+  </header>`;
+}
+function hero() {
+  return `<section class="hero" aria-labelledby="welcome">
+    <div class="hero-content">
+      <div class="hero-label"><span></span> MENTORSHIP WORKSPACE</div>
+      <h1 id="welcome">Good to see you, ${esc(mine().intake?.preferred || firstName(mine().name))}.</h1>
+      <p>Stay connected and take the next step on your path into tech.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i><i class="ring r4"></i>
+      <b class="star main-star">✦</b><b class="star small-star">✦</b><b class="star tiny-star">✧</b><i class="orbit-dot"></i>
+    </div>
+  </section>`;
+}
+function threadList() {
+  const threads = state.data.threads.filter(t =>
+    (state.messageFilter === 'all' || (state.messageFilter === 'unread' ? t.unread : t.members.length > 2)) &&
+    [titleOf(t), names(t).join(' '), t.preview || ''].join(' ').toLowerCase().includes(state.filter.toLowerCase()));
+  return threads.length ? threads.map(t => `<button type="button" class="thread-item ${t.id === state.active ? 'selected' : ''}" aria-pressed="${t.id === state.active}" data-action="thread" data-id="${attr(t.id)}">
+    ${threadAvatar(t,'small')}<span class="thread-summary"><strong>${esc(titleOf(t))}</strong><span>${esc(t.preview || 'Start the conversation')}</span></span>
+    <span class="thread-meta"><time datetime="${new Date(t.updated_at).toISOString()}">${esc(compactDate(t.updated_at))}</time>${t.unread ? '<i aria-label="Unread"></i>' : ''}</span>
+  </button>`).join('') : '<p class="small-empty">No conversations match.</p>';
+}
+function messageContent() {
+  if (state.loadingThread) return '<p class="small-empty">Opening conversation…</p>';
+  if (!state.messages.length) return '<div class="empty"><span class="tile">' + icon('messages',23) + '</span><h3>Start the conversation</h3><p>Share an introduction or one goal you’d like to discuss.</p></div>';
+  return state.messages.map((m,i) => {
+    const me = m.author_id === mine().id;
+    const person = pById(m.author_id);
+    const prev = state.messages[i-1];
+    const separated = !prev || dayKey(prev.created_at) !== dayKey(m.created_at);
+    const label = dayKey(m.created_at) === dayKey(Date.now()) ? 'Today' : dayText(m.created_at);
+    return `${separated ? '<div class="day-divider"><span>' + esc(label) + '</span></div>' : ''}<article class="message ${me ? 'mine' : ''}">
+      ${me ? '' : avatar(person,'tiny')}
+      <div class="bubble-group"><div class="message-meta"><strong>${esc(me ? 'You' : person?.name || 'Member')}</strong><time datetime="${new Date(m.created_at).toISOString()}">${esc(shortTime(m.created_at))}</time></div><div class="bubble">${esc(m.body)}</div></div>
+    </article>`;
+  }).join('');
+}
+function conversation() {
+  const t = activeThread();
+  if (!t) return '<div class="empty conversation-empty"><span class="tile">' + icon('messages',24) + '</span><h3>Your conversations start here</h3><p>Send a message to a mentor or start a mentoring group.</p><button class="button primary" type="button" data-action="new-thread">' + icon('plus',16) + ' New message</button></div>';
+  const partner = pById(t.members.find(id => id !== mine()?.id));
+  const description = t.members.length === 2
+    ? [partner?.role, partner?.focus].filter(Boolean).join(' · ')
+    : t.members.length + ' members · ' + names(t).map(firstName).join(', ');
+  return `<div class="conversation">
+    <header class="conversation-head">
+      ${iconButton('left','Back to conversations','back','mobile-back')}
+      ${threadAvatar(t,'medium')}
+      <div class="conversation-title"><h3>${esc(titleOf(t))}</h3><p>${esc(description)}</p></div>
+      <button class="button outline compact" type="button" data-action="thread-event">${icon('calendar',17)}<span>Schedule</span></button>
+    </header>
+    <div class="message-stream" id="message-stream" role="log" aria-label="Conversation messages">${messageContent()}</div>
+    <form class="composer" id="composer"><label class="sr-only" for="draft">Message</label><textarea maxlength="3000" rows="1" id="draft" placeholder="Write a message…">${esc(state.drafts.get(t.id) || '')}</textarea><button class="send" type="submit" aria-label="Send message" title="Send message">${icon('send',18)}</button></form>
+  </div>`;
+}
+function upcomingItem(e) {
+  return `<button type="button" class="upcoming-item" data-action="event-view" data-id="${attr(e.id)}">
+    <span class="date-tile"><span>${esc(fmt(e.starts_at,{month:'short'}))}</span><strong>${esc(fmt(e.starts_at,{day:'numeric'}))}</strong></span>
+    <span class="upcoming-text"><strong>${esc(e.title)}</strong><small>${esc(fmt(e.starts_at,{weekday:'short'}))} · ${esc(shortTime(e.starts_at))}</small><span class="format ${e.format === 'In person' ? 'in-person' : ''}">${icon(e.format === 'Online' ? 'video' : 'pin',13)}${esc(e.format)}</span></span>
+  </button>`;
+}
+function rail() {
+  const events = upcoming().slice(0,2);
+  return `<aside class="rail" aria-label="Meetings and assistant">
+    <section class="panel next-panel"><div class="rail-title"><span class="tile green">${icon('calendar',20)}</span><h2>Coming up</h2></div>
+     <div id="upcoming">${events.length ? events.map(upcomingItem).join('') : '<p class="small-empty">Nothing scheduled yet.</p>'}</div>
+     <button class="text-button calendar-link" type="button" data-action="page" data-id="calendar">View calendar</button>
+    </section>
+    <section class="panel ai-panel"><div class="rail-title"><span class="tile purple">${icon('sparkles',21)}</span><h2>AI Assistant</h2></div>
+      <p>Make your next conversation count.</p>
+      <div class="assistant-actions">
+        <button type="button" data-action="assistant" data-id="summary">${icon('messages',17)}<span>Summarize conversation</span>${icon('chevron',15)}</button>
+        <button type="button" data-action="assistant" data-id="reply">${icon('edit',17)}<span>Draft a reply</span>${icon('chevron',15)}</button>
+        <button type="button" data-action="assistant" data-id="next">${icon('check',17)}<span>Suggest next steps</span>${icon('chevron',15)}</button>
+      </div>
+      ${state.data.ai ? '' : '<div class="assistant-note">Template preview · Live AI needs setup</div>'}
+    </section>
+  </aside>`;
+}
+function messagesPage() {
+  return `${hero()}<div class="dashboard">
+    <section class="panel inbox-panel ${state.mobileThread ? 'thread-open' : ''}" aria-label="Messages">
+      <div class="inbox">
+        <div class="inbox-top"><h2>Inbox</h2>${iconButton('plus','Start a conversation','new-thread','inbox-add')}</div>
+        <div class="search-wrap">${icon('search',17)}<input id="thread-search" type="search" aria-label="Search conversations" placeholder="Search messages" value="${attr(state.filter)}"></div>
+        <div class="filter-row" aria-label="Filter conversations">
+          ${[['all','All'],['unread','Unread'],['groups','Groups']].map(([id,label]) => `<button type="button" class="filter ${state.messageFilter === id ? 'chosen' : ''}" aria-pressed="${state.messageFilter === id}" data-action="filter" data-id="${id}">${label}</button>`).join('')}
+        </div>
+        <div class="thread-list" id="thread-list">${threadList()}</div>
+      </div>
+      <div class="conversation-area" id="conversation-area">${conversation()}</div>
+    </section>
+    ${rail()}
+  </div>`;
+}
+function updateInbox() {
+  const list = document.querySelector('#thread-list');
+  if (list) {
+    const focus = document.activeElement?.closest('[data-action="thread"]')?.dataset.id;
+    list.innerHTML = threadList();
+    if (focus) [...list.querySelectorAll('button')].find(button => button.dataset.id === focus)?.focus();
+  }
+  const events = document.querySelector('#upcoming');
+  if (events) {
+    const items = upcoming().slice(0,2);
+    events.innerHTML = items.length ? items.map(upcomingItem).join('') : '<p class="small-empty">Nothing scheduled yet.</p>';
+  }
+}
+function updateMessages(forceBottom) {
+  const stream = document.querySelector('#message-stream');
+  if (!stream) return;
+  const closeToEnd = stream.scrollHeight - stream.clientHeight - stream.scrollTop < 90;
+  stream.innerHTML = messageContent();
+  if (forceBottom || closeToEnd) stream.scrollTop = stream.scrollHeight;
+}
+
+const dateOnly = d => [d.getFullYear(), String(d.getMonth()+1).padStart(2,'0'), String(d.getDate()).padStart(2,'0')].join('-');
+const localDateTime = value => {
+  const d = new Date(value);
+  return dateOnly(d) + 'T' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+};
+function calendarPage() {
+  const month = state.month;
+  const first = new Date(month.getFullYear(),month.getMonth(),1);
+  const count = new Date(month.getFullYear(),month.getMonth()+1,0).getDate();
+  const days = Math.ceil((first.getDay() + count) / 7) * 7;
+  const visibleEvents = state.data.events.filter(e => state.calendar === 'all'
+    || (state.calendar === 'public' ? e.visibility === 'Public' : isAttending(e)));
+  const filters = [['all','All events'],['public','Public calendar'],['private','My calendar']];
+  const cells = Array.from({length:days}, (_,i) => {
+    const d = new Date(month.getFullYear(),month.getMonth(),i - first.getDay() + 1);
+    const day = dateOnly(d);
+    const matched = visibleEvents.filter(e => dateOnly(new Date(e.starts_at)) === day);
+    return `<div class="calendar-cell ${d.getMonth() !== month.getMonth() ? 'muted-day' : ''} ${day === dateOnly(new Date()) ? 'today' : ''}"><button class="cell-date" type="button" data-action="day-events" data-id="${day}" aria-label="${esc(dayText(d))}${matched.length ? ', ' + matched.length + ' events' : ''}"><span>${d.getDate()}</span><i aria-hidden="true">${matched.length ? '•' : ''}</i></button>${matched.slice(0,2).map(e => `<button class="event-tag ${e.visibility === 'Public' ? 'public-event' : ''}" type="button" data-action="event-view" data-id="${attr(e.id)}" title="${attr(e.title)}">${esc(e.title)}</button>`).join('')}${matched.length > 2 ? `<button type="button" class="more-events text-button" data-action="day-events" data-id="${day}">+${matched.length-2} more</button>` : ''}</div>`;
+  }).join('');
+  const agenda = visibleEvents.filter(e => {
+    const d = new Date(e.starts_at);
+    return d.getFullYear() === month.getFullYear() && d.getMonth() === month.getMonth();
+  });
+  return `<div class="page-lead"><h1>Calendar</h1><p>Plan check-ins and see what’s happening across the community.</p></div>
+    <div class="calendar-layout"><section class="panel calendar-panel" aria-label="Monthly calendar">
+      <div class="calendar-controls"><h2>${esc(fmt(month,{month:'long',year:'numeric'}))}</h2><div>${iconButton('left','Previous month','prev-month')}<button type="button" class="button outline compact" data-action="today">Today</button>${iconButton('chevron','Next month','next-month')}</div></div>
+      <div class="calendar-filters">${filters.map(([id,label]) => `<button type="button" class="filter ${state.calendar === id ? 'chosen' : ''}" aria-pressed="${state.calendar === id}" data-action="calendar-filter" data-id="${id}">${label}</button>`).join('')}</div>
+      <div class="calendar-grid"><div class="weekdays">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => '<span>' + d + '</span>').join('')}</div><div class="calendar-cells">${cells}</div></div>
+    </section><aside class="panel agenda"><div class="rail-title"><span class="tile green">${icon('calendar',20)}</span><h2>This month</h2></div>
+    <p class="agenda-time">Times shown in ${esc(timezone())}</p>
+    ${agenda.length ? agenda.map(upcomingItem).join('') : '<p class="small-empty">No events on this calendar yet.</p>'}
+    <div class="legend"><span>${icon('globe',15)} Public · Workspace members</span><span>${icon('lock',15)} Private · Owner and invited guests</span></div>
+    </aside></div>`;
+}
+function peoplePage() {
+  const people = state.data.people.filter(p => p.id !== mine()?.id);
+  const matches = state.data.matches || [];
+  return `<div class="page-lead"><h1>People</h1><p>Find mentors and peers taking different paths into tech.</p></div>
+  ${mine().role === 'Mentee' ? `<section class="panel match-panel"><h2>Recommended mentors</h2>
+    ${matches.length ? '<div class="people-grid">' + matches.map(match => {
+      const person = pById(match.id);
+      return `<article class="panel person-card">${avatar(person,'small')}<h2>${esc(person.name)}</h2><small>@${esc(person.username)}</small><p><strong>In common</strong><br>${esc(match.common.join(', '))}${match.preferences.length ? '<br>' + esc(match.preferences.join(' · ')) : ''}</p><button type="button" class="button outline" data-action="message-person" data-id="${attr(person.id)}">Message</button></article>`;
+    }).join('') + '</div>' : '<p>No shared interests found yet. Recommendations appear when a mentor shares interests with your story.</p>'}</section>` : ''}
+  <div class="people-grid">${people.length ? people.map(p => `<article class="panel person-card">
+  ${avatar(p,'large')}<span class="role-pill">${esc(p.role)}</span><h2>${esc(p.name)}</h2>${p.username ? '<small>@' + esc(p.username) + '</small>' : ''}<p>${esc(p.focus || 'No focus area added yet.')}</p>
+  <button type="button" class="button outline" data-action="message-person" data-id="${attr(p.id)}">${icon('messages',17)} Message</button></article>`).join('') : '<div class="panel empty"><span class="tile">' + icon('users',25) + '</span><h3>No other members yet</h3><p>People appear here once they set up their profiles.</p></div>'}</div>`;
+}
+function render() {
+  if (!mine()?.intake?.story) {
+    app.innerHTML = `<main class="onboard" id="main"><section class="panel onboard-card"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTciIGZpbGw9IiNiY2E4ZmYiLz4KICA8cGF0aCBkPSJNMjQgMjIgMTMgMzJsMTEgMTBtMTYtMjAgMTEgMTAtMTEgMTBNMzYgMTlsLTggMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1MTczZiIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" width="48" height="48" alt=""><h1>Set up your workspace profile</h1><p>Tell other members how you’re taking part in TechWomen AZ.</p>
+    ${profileFields(mine())}${state.auth?.accounts
+      ? '<button type="button" class="text-button" data-action="account-signout">Sign out</button>'
+      : ''}</section></main>`;
+    return;
+  }
+  app.innerHTML = `${sidebar()}${state.menu ? '<button class="scrim" data-action="menu" type="button" aria-label="Close workspace navigation"></button>' : ''}<div class="shell">${header()}<main class="main" id="main">${{messages:messagesPage,calendar:calendarPage,people:peoplePage}[state.page]()}</main></div>`;
+  updateBadges();
+  const stream = document.querySelector('#message-stream');
+  if (stream) stream.scrollTop = stream.scrollHeight;
+}
+
+function openModal(title, html) {
+  modal.innerHTML = `<div class="modal-head"><h2 id="modal-title">${esc(title)}</h2>${iconButton('close','Close dialog','close')}</div>${html}`;
+  if (!modal.open) modal.showModal();
+  modal.scrollTop = 0;
+}
+function formError(form, error) {
+  const target = form.querySelector('.form-error');
+  if (target) target.textContent = error.message;
+  else toast(error.message);
+}
+const formErrorLine = '<p class="form-error" role="status"></p>';
+const cancel = '<button type="button" class="button outline" data-action="close">Cancel</button>';
+function checkPeople(people, selected) {
+  return people.map(p => `<label class="person-choice" data-username="${attr(p.username || '')}"><input type="checkbox" name="person" value="${attr(p.id)}" ${selected.includes(p.id) ? 'checked' : ''}>${avatar(p,'tiny')}<span><strong>${esc(p.name)}</strong><small>${p.username ? '@' + esc(p.username) + ' · ' : ''}${esc(p.role)}</small></span></label>`).join('');
+}
+function newThread(preselect) {
+  const participants = state.data.people.filter(p => p.id !== mine().id && p.username);
+  openModal('New message', `<form id="new-thread-form" class="dialog-form" data-request="${crypto.randomUUID()}"><p>Find people by username. Include at least one mentor and one mentee.</p>
+      <label>Username<input id="recipient-search" type="search" placeholder="@username" autocomplete="off"></label>
+      <fieldset class="choices"><legend>Recipients</legend>${checkPeople(participants,preselect ? [preselect] : [])}<p id="recipient-status" role="status"></p></fieldset>
+      <label>Group name <span class="hint">(for 3 or more people)</span><input name="title" maxlength="80" placeholder="e.g. Career switch support"></label>
+      ${formErrorLine}<div class="form-actions">${cancel}<button class="button primary" type="submit">Start conversation</button></div></form>`);
+  filterRecipients(modal.querySelector('#recipient-search'));
+}
+function filterRecipients(search) {
+  const username = search.value.trim().toLowerCase().replace(/^@/, '');
+  let matches = 0;
+  for (const choice of search.form.querySelectorAll('[data-username]')) {
+    const match = Boolean(username && choice.dataset.username.startsWith(username));
+    choice.hidden = !match && !choice.querySelector('input').checked;
+    if (match) matches++;
+  }
+  search.form.querySelector('#recipient-status').textContent = username && !matches ? 'No matching usernames.' : '';
+}
+function profileFields(p) {
+  const intake = p?.intake || {};
+  const options = (values, selected) => '<option value="">Choose one</option>' + values.map(value => `<option ${value === selected ? 'selected' : ''}>${value}</option>`).join('');
+  return `<form id="profile-form" class="dialog-form" novalidate>
+    <section class="intake-step" data-intake="0"><h2>What should we call you?</h2>
+    <label>Name<input name="name" maxlength="60" required value="${attr(p?.name || state.data.signedIn.name)}"></label>
+    <label>Preferred name<input name="preferred" maxlength="60" required value="${attr(intake.preferred || state.accountPreferred)}"></label>
+    <label>Username<input name="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" required value="${attr(p?.username)}" placeholder="e.g. alex_r"></label>
+    </section>
+    <section class="intake-step" data-intake="1" hidden><h2>How would you like to connect?</h2>
+    <label>Role<select name="role"><option value="Mentee" ${p?.role === 'Mentee' ? 'selected' : ''}>Mentee</option><option value="Mentor" ${p?.role === 'Mentor' ? 'selected' : ''}>Mentor</option></select></label>
+    <label>Mentoring style<select name="style" required>${options(['One-on-one','Group','Either'],intake.style)}</select></label>
+    </section>
+    <section class="intake-step" data-intake="2" hidden><h2>Where would you like to meet?</h2>
+    <label>Meeting preference<select name="format" required>${options(['In person','Online','Either'],intake.format)}</select></label>
+    </section>
+    <section class="intake-step" data-intake="3" hidden><h2>Tell us your story</h2><p id="story-prompt"></p>
+    <label>Focus area <span class="hint">(optional)</span><input name="focus" maxlength="120" placeholder="e.g. Business to product design" value="${attr(p?.focus)}"></label>
+    <label>Your story<textarea required name="story" maxlength="2500" rows="5">${esc(intake.story)}</textarea></label>
+    <p class="hint">Your story helps find matches. People see the shared topics instead of your full story.</p></section>
+    ${formErrorLine}<div class="form-actions">${p?.intake?.story ? cancel : ''}<button class="button outline" type="button" data-action="intake-back" hidden>Back</button><button class="button primary" type="submit">Continue</button></div></form>`;
+}
+function showIntake(form, index) {
+  form.querySelectorAll('[data-intake]').forEach(section => { section.hidden = Number(section.dataset.intake) !== index; });
+  form.querySelector('[data-action="intake-back"]').hidden = index === 0;
+  form.querySelector('[type="submit"]').textContent = index === 3 ? 'Save profile' : 'Continue';
+  if (index === 3) {
+    const style = form.elements.style.value;
+    const format = form.elements.format.value;
+    const stylePrompt = {
+      'One-on-one':'What would make a one-on-one conversation valuable to you?',
+      Group:'What would you like to learn or share with a mentoring group?',
+      Either:'What kind of mentoring support would suit you best?',
+    };
+    const formatPrompt = {
+      'In person':'If location matters, share your general area.',
+      Online:'If you have a favorite way to collaborate online, mention it.',
+      Either:'',
+    };
+    const background = form.elements.role.value === 'Mentor'
+      ? 'What’s your path into tech, what topics can you mentor on, and which projects have shaped your experience?'
+      : 'What brought you to tech, what interests you, and what would you like your mentor to help you with?';
+    form.querySelector('#story-prompt').textContent = [background,stylePrompt[style],formatPrompt[format]].filter(Boolean).join(' ');
+  }
+  form.querySelector('[data-intake="' + index + '"] h2').setAttribute('tabindex','-1');
+  form.querySelector('[data-intake="' + index + '"] h2').focus();
+}
+function profileMenu() {
+  const demo = state.mode === 'demo';
+  const samplePeople = state.data.people.filter(p => !p.isDemoAccount);
+  const accountStatus = state.data.signedIn;
+  openModal('Workspace profile', `<div class="dialog-form">
+    <div class="profile-header">${avatar(mine(),'medium')}<div><strong>${esc(mine().name)}</strong><p>@${esc(mine().username)} · ${esc(mine().role)}</p></div></div>
+    ${demo && !mine().isDemoAccount ? `<p>Switch between sample mentors and mentees to try both sides of a conversation.</p><div class="profile-options">${samplePeople.map(p => `<button type="button" data-action="switch-person" data-id="${p.id}">${avatar(p,'tiny')}<span>${esc(p.name)}<small>${esc(p.role)}</small></span>${p.id === mine().id ? icon('check',17) : ''}</button>`).join('')}</div>` : ''}
+    <button type="button" class="button outline" data-action="profile-edit">${icon('edit',17)} Edit profile</button>
+    ${accountStatus.accounts ? accountStatus.googleLinked
+      ? '<p class="google-connected">' + icon('check',17) + ' Google account connected</p>'
+      : googleButton(accountStatus.googleAvailable,true) : ''}
+    ${state.auth?.accounts ? '<button type="button" class="text-button" data-action="account-signout">Sign out</button>' : ''}</div>`);
+}
+const reminders = [[0,'No reminder'],[5,'5 minutes before'],[10,'10 minutes before'],[15,'15 minutes before'],[30,'30 minutes before'],[60,'1 hour before'],[1440,'1 day before']];
+function eventForm(e, guests = [], day = '', fromThread = false) {
+  const soon = new Date(Math.ceil((Date.now() + 60000) / 1800000) * 1800000);
+  if (day) {
+    const [y,m,d] = day.split('-').map(Number);
+    soon.setFullYear(y,m-1,d);
+    soon.setHours(10,0,0,0);
+  }
+  const starts = e?.starts_at || soon.getTime();
+  const ends = e?.ends_at || starts + 30 * 60000;
+  const format = e?.format || 'Online';
+  const people = state.data.people.filter(p => p.id !== mine().id);
+  openModal(e ? 'Edit event' : fromThread ? 'Schedule a follow-up' : 'New event', `<form class="dialog-form" id="event-form" data-id="${attr(e?.id)}" data-request="${crypto.randomUUID()}">
+    <label>Event title<input required name="title" maxlength="100" placeholder="e.g. Portfolio check-in" value="${attr(e?.title)}"></label>
+    <div class="form-grid"><label>Starts<input type="datetime-local" name="start" required value="${localDateTime(starts)}"></label>
+    <label>Ends<input type="datetime-local" name="end" required value="${localDateTime(ends)}"></label></div>
+    <div class="hint">Time zone · ${esc(timezone())}</div>
+    <div class="form-grid"><label>Meeting format<select name="format"><option ${format === 'Online' ? 'selected' : ''}>Online</option><option ${format === 'In person' ? 'selected' : ''}>In person</option></select></label>
+    <label>Visibility<select name="visibility"><option ${e?.visibility === 'Private' ? '' : e?.visibility ? '' : 'selected'}>Private</option><option ${e?.visibility === 'Public' ? 'selected' : ''}>Public</option></select></label></div>
+    <p class="hint" id="visibility-note">${e?.visibility === 'Public' ? 'Visible to everyone in this workspace.' : 'Visible to you and the people you invite.'}</p>
+    <label><span id="location-label">${format === 'Online' ? 'Meeting link' : 'Location'} <span class="hint">(optional)</span></span><input name="location" maxlength="240" placeholder="${format === 'Online' ? 'https://…' : 'Address or meeting place'}" value="${attr(e?.location)}"></label>
+    <label>Remind me and invited guests<select name="reminder">${reminders.map(([key,label]) => `<option value="${key}" ${(e?.reminder ?? 30) === key ? 'selected' : ''}>${label}</option>`).join('')}</select></label>
+    ${people.length ? '<details class="guest-picker"' + (guests.length ? ' open' : '') + '><summary>Invite people (optional)</summary><div class="choices">' + checkPeople(people,guests) + '</div></details>' : ''}
+    <label>Notes <span class="hint">(optional)</span><textarea name="notes" maxlength="1000" rows="2" placeholder="What should people bring or prepare?">${esc(e?.notes)}</textarea></label>
+    ${formErrorLine}<div class="form-actions">${cancel}<button type="submit" class="button primary">${e ? 'Save changes' : 'Save event'}</button></div></form>`);
+}
+const googleStamp = value => new Date(value).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');
+function googleUrl(e) {
+  return 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
+    action:'TEMPLATE',text:e.title,dates:googleStamp(e.starts_at) + '/' + googleStamp(e.ends_at),details:e.notes,
+    location:e.location,
+  });
+}
+const calText = value => String(value).replace(/\\/g,'\\\\').replace(/\r\n|\r|\n/g,'\\n').replace(/([,;])/g,'\\$1');
+function foldCalendarLine(line) {
+  const encoder = new TextEncoder();
+  const chunks = [];
+  let current = '', size = 0;
+  for (const character of line) {
+    const bytes = encoder.encode(character).length;
+    if (size + bytes > 75) {
+      chunks.push(current);
+      current = ' ';
+      size = 1;
+    }
+    current += character;
+    size += bytes;
+  }
+  chunks.push(current);
+  return chunks.join('\r\n');
+}
+function downloadEvent(e) {
+  const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TechWomen AZ//Mentoring Workspace//EN','BEGIN:VEVENT',
+    'UID:' + calText(e.id) + '@techwomen-az', 'DTSTAMP:' + googleStamp(Date.now()), 'DTSTART:' + googleStamp(e.starts_at), 'DTEND:' + googleStamp(e.ends_at),
+    'SUMMARY:' + calText(e.title),'DESCRIPTION:' + calText(e.notes),'LOCATION:' + calText(e.location), 'CLASS:' + e.visibility.toUpperCase()];
+  if (e.reminder) lines.push('BEGIN:VALARM','TRIGGER:-PT' + e.reminder + 'M','ACTION:DISPLAY','DESCRIPTION:' + calText(e.title),'END:VALARM');
+  lines.push('END:VEVENT','END:VCALENDAR');
+  const url = URL.createObjectURL(new Blob([lines.map(foldCalendarLine).join('\r\n') + '\r\n'],{type:'text/calendar;charset=utf-8'}));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'techwomen-az-event.ics';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url),1000);
+}
+function showEvent(e) {
+  if (!e) return;
+  const details = [
+    ['clock',dayText(e.starts_at) + ' · ' + shortTime(e.starts_at) + ' to ' + (dayKey(e.starts_at) === dayKey(e.ends_at) ? '' : dayText(e.ends_at) + ' ') + shortTime(e.ends_at) + ' ' + timezone()],
+    [e.format === 'Online' ? 'video' : 'pin',e.format + (e.format === 'In person' && e.location ? ' · ' + e.location : '')],
+    [e.visibility === 'Public' ? 'globe' : 'lock',e.visibility === 'Public' ? 'Public · Workspace members' : 'Private · Owner and invited guests'],
+    ...(isAttending(e) && e.reminder ? [['bell',reminders.find(([minutes]) => minutes === e.reminder)?.[1] || 'Reminder set']] : []),
+  ];
+  const guests = e.guests.map(id => pById(id)?.name).filter(Boolean);
+  openModal(e.title,`<div class="dialog-form event-details">
+    <div class="detail-list">${details.map(([symbol,label]) => `<p>${icon(symbol,18)}<span>${esc(label)}</span></p>`).join('')}</div>
+    ${e.notes ? '<p class="event-notes">' + esc(e.notes) + '</p>' : ''}${guests.length ? '<p class="hint">Invited · ' + esc(guests.join(', ')) + '</p>' : ''}
+    <div class="event-links">
+      ${e.format === 'Online' && /^https:\/\//i.test(e.location) ? `<a class="button primary" href="${attr(e.location)}" target="_blank" rel="noopener noreferrer">${icon('video',17)} Join online</a>` : ''}
+      <a class="button outline" href="${attr(googleUrl(e))}" target="_blank" rel="noopener noreferrer">${icon('calendar',17)} Add to Google Calendar</a>
+      <button type="button" class="button outline" data-action="event-download" data-id="${attr(e.id)}">${icon('download',17)} Download calendar file</button>
+    </div>
+    ${e.owner_id === mine().id ? `<div class="form-actions"><button type="button" class="text-button danger" data-action="event-remove" data-id="${attr(e.id)}">Delete event</button><button type="button" class="button outline" data-action="event-edit" data-id="${attr(e.id)}">${icon('edit',17)} Edit event</button></div>` : ''}
+    </div>`);
+}
+function reminderMenu() {
+  const reminders = dueReminders();
+  openModal('Reminders', `<div class="dialog-form">${reminders.length ? reminders.map(e => `<div class="reminder-line">${upcomingItem(e)}<button type="button" class="text-button" data-action="dismiss" data-id="${attr(e.id)}">Mark as read</button></div>`).join('')
+  : '<div class="empty"><span class="tile">' + icon('bell',24) + '</span><h3>You’re caught up</h3><p>Meeting reminders appear here at the time you choose.</p></div>'}</div>`);
+}
+async function assistant(task, confirmed = false) {
+  const thread = activeThread();
+  if (!thread) return toast('Open a conversation first.');
+  const label = {summary:'Summarize conversation',reply:'Draft a reply',next:'Suggest next steps'}[task];
+  if (state.data.ai && !confirmed) {
+    openModal(label, `<div class="dialog-form"><p>The assistant uses up to 20 recent messages in this conversation to generate a suggestion.</p><div class="form-actions">${cancel}<button type="button" class="button primary" data-action="assistant-confirm" data-id="${task}">Generate</button></div></div>`);
+    return;
+  }
+  openModal(label, '<div class="dialog-form" aria-busy="true"><p>Preparing your suggestion…</p></div>');
+  const marker = modal.querySelector('.dialog-form');
+  try {
+    const result = await api('assistant',{thread:thread.id,task});
+    if (!modal.open || modal.querySelector('.dialog-form') !== marker) return;
+    openModal(label, `<div class="dialog-form"><p class="hint">${result.source === 'ai' ? 'AI suggestion · Review before sharing' : 'Built-in template preview'}</p><div id="assistant-result" class="assistant-result">${esc(result.text)}</div><div class="form-actions">
+      <button type="button" class="button outline" data-action="copy-assistant">${icon('copy',16)} Copy</button>
+      ${task === 'reply' ? '<button type="button" class="button primary" data-action="use-draft">Use as draft</button>' : ''}
+      </div></div>`);
+  } catch (error) {
+    if (modal.open && modal.querySelector('.dialog-form') === marker) openModal(label, '<div class="dialog-form"><p role="status">' + esc(error.message) + '</p></div>');
+  }
+}
+
+async function selectThread(id) {
+  state.active = id;
+  state.page = 'messages';
+  state.mobileThread = true;
+  state.messages = [];
+  state.loadingThread = true;
+  render();
+  await loadMessages({forceBottom:true});
+}
+async function changeWorkspace(mode, person = 'avery') {
+  state.mode = mode;
+  state.as = person;
+  storage.set('tw.mode',mode);
+  storage.set('tw.as',person);
+  Object.assign(state,{page:'messages',active:null,messages:[],filter:'',messageFilter:'all',menu:false,mobileThread:false,drafts:new Map()});
+  if (modal.open) modal.close();
+  await refresh({full:true});
+  await loadMessages({forceBottom:true});
+}
+function dayEvents(day) {
+  const events = state.data.events.filter(e => dateOnly(new Date(e.starts_at)) === day &&
+    (state.calendar === 'all' || (state.calendar === 'public' ? e.visibility === 'Public' : isAttending(e))));
+  openModal(dayText(new Date(day + 'T12:00')),`<div class="dialog-form">
+    ${events.length ? events.map(upcomingItem).join('') : '<p>No events on this day.</p>'}
+    <div class="form-actions"><button type="button" class="button primary" data-action="event-on-day" data-id="${day}">${icon('plus',16)} New event</button></div></div>`);
+}
+const findEvent = id => state.data.events.find(e => e.id === id);
+const actions = {
+  page: async id => {
+    state.page = id;
+    state.menu = false;
+    state.mobileThread = false;
+    render();
+    if (id === 'messages') await loadMessages({mark:false});
+  },
+  menu: () => { state.menu = !state.menu; render(); },
+  back: () => { state.mobileThread = false; render(); },
+  thread: selectThread,
+  filter: id => {
+    state.messageFilter = id;
+    document.querySelectorAll('[data-action="filter"]').forEach(button => {
+      button.classList.toggle('chosen', button.dataset.id === id);
+      button.setAttribute('aria-pressed',button.dataset.id === id);
+    });
+    updateInbox();
+  },
+  'new-thread': () => newThread(),
+  'message-person': newThread,
+  'profile-menu': profileMenu,
+  'profile-edit': () => openModal('Edit profile',profileFields(mine())),
+  'intake-back': () => {
+    const form = document.querySelector('#profile-form');
+    showIntake(form,Number(form.querySelector('[data-intake]:not([hidden])').dataset.intake)-1);
+  },
+  'switch-person': id => state.auth?.offline ? openDemoAccount(id) : changeWorkspace('demo',id),
+  'switch-demo': () => changeWorkspace('demo'),
+  'switch-live': () => changeWorkspace('live'),
+  'account-switch': kind => {
+    state.accountKind = kind;
+    state.accountNotice = '';
+    return renderAccountGate(true);
+  },
+  'account-signout': accountSignOut,
+  'google-info': () => openModal('Google sign-in', '<div class="dialog-form"><p>Google sign-in is available when TechWomen AZ runs on a server configured with a Google OAuth client.</p><div class="form-actions"><button type="button" class="button primary" data-action="close">Done</button></div></div>'),
+  close: () => modal.close(),
+  'event-new': () => eventForm(null),
+  'thread-event': () => eventForm(null,activeThread().members.filter(id => id !== mine().id),'',true),
+  'event-view': id => showEvent(findEvent(id)),
+  'event-edit': id => { const e = findEvent(id); if (e) eventForm(e,e.guests); },
+  'event-download': id => { const e = findEvent(id); if (e) downloadEvent(e); },
+  'event-remove': id => openModal('Delete this event?',`<div class="dialog-form"><p>It will be removed from the workspace calendar and from invited guests’ schedules.</p><div class="form-actions">${cancel}<button type="button" class="button destructive" data-action="event-remove-confirm" data-id="${attr(id)}">Delete event</button></div></div>`),
+  'event-remove-confirm': async id => {
+    await api('delete-event',{id}); modal.close(); await refresh({full:true}); toast('Event deleted.');
+  },
+  'calendar-filter': id => { state.calendar = id; render(); document.querySelector('[data-action="calendar-filter"][data-id="' + id + '"]')?.focus(); },
+  'prev-month': () => moveMonth(-1,'prev-month'),
+  'next-month': () => moveMonth(1,'next-month'),
+  today: () => {
+    state.month = new Date(new Date().getFullYear(),new Date().getMonth(),1);
+    render(); document.querySelector('[data-action="today"]')?.focus();
+  },
+  'day-events': dayEvents,
+  'event-on-day': day => eventForm(null,[],day),
+  reminders: reminderMenu,
+  dismiss: async id => { await api('dismiss',{id}); await refresh(); reminderMenu(); },
+  assistant: id => assistant(id),
+  'assistant-confirm': id => assistant(id,true),
+  'copy-assistant': async () => {
+    const result = document.querySelector('#assistant-result');
+    try {
+      await navigator.clipboard.writeText(result.textContent);
+      toast('Copied.');
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(result);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      toast('Text selected. Press Ctrl+C to copy.');
+    }
+  },
+  'use-draft': () => {
+    const text = document.querySelector('#assistant-result').textContent;
+    const existing = state.drafts.get(state.active);
+    const merged = existing ? existing + '\n\n' + text : text;
+    const draft = document.querySelector('#draft');
+    state.drafts.set(state.active, merged.slice(0,3000));
+    modal.close();
+    if (draft) { draft.value = state.drafts.get(state.active); draft.focus(); }
+  },
+};
+function moveMonth(amount, action) {
+  state.month = new Date(state.month.getFullYear(),state.month.getMonth() + amount,1);
+  render();
+  document.querySelector('[data-action="' + action + '"]')?.focus();
+}
+document.addEventListener('click', async event => {
+  const button = event.target.closest('button[data-action]');
+  if (!button || !Object.hasOwn(actions,button.dataset.action)) return;
+  if (button.dataset.action === 'event-remove-confirm') button.disabled = true;
+  try { await actions[button.dataset.action](button.dataset.id); }
+  catch (error) { toast(error.message); }
+  finally { if (button.isConnected) button.disabled = false; }
+});
+document.addEventListener('input', event => {
+  if (event.target.id === 'recipient-search') filterRecipients(event.target);
+  if (event.target.id === 'thread-search') {
+    state.filter = event.target.value;
+    updateInbox();
+  }
+  if (event.target.id === 'draft') state.drafts.set(state.active,event.target.value);
+});
+document.addEventListener('change', event => {
+  const form = event.target.form;
+  if (form?.id !== 'event-form') return;
+  if (event.target.name === 'format') {
+    const online = event.target.value === 'Online';
+    form.querySelector('#location-label').firstChild.textContent = online ? 'Meeting link ' : 'Location ';
+    form.elements.location.placeholder = online ? 'https://…' : 'Address or meeting place';
+  }
+  if (event.target.name === 'visibility') form.querySelector('#visibility-note').textContent = event.target.value === 'Public'
+    ? 'Visible to everyone in this workspace.' : 'Visible to you and the people you invite.';
+  if (event.target.name === 'start' && form.elements.start.value >= form.elements.end.value) {
+    const start = new Date(form.elements.start.value).getTime();
+    if (Number.isFinite(start)) form.elements.end.value = localDateTime(start + 1800000);
+  }
+});
+document.addEventListener('keydown', event => {
+  if (event.target.id === 'draft' && event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+    event.preventDefault();
+    event.target.form.requestSubmit();
+  }
+});
+const pendingMessages = new Map();
+document.addEventListener('submit', async event => {
+  const form = event.target;
+  if (!['account-form','composer','event-form','new-thread-form','profile-form'].includes(form.id)) return;
+  event.preventDefault();
+  const button = form.querySelector('button[type="submit"]');
+  if (button.disabled) return;
+  const fields = new FormData(form);
+  button.disabled = true;
+  const errorLine = form.querySelector('.form-error');
+  if (errorLine) errorLine.textContent = '';
+  try {
+    if (form.id === 'account-form') {
+      const details = Object.fromEntries(fields);
+      const create = form.dataset.kind === 'register';
+      if (create) state.accountPreferred = details.preferred;
+      if (state.auth.offline) {
+        const account = await demoApi(null,create ? 'demo-register' : 'demo-sign-in',details);
+        if (account.id) await openDemoAccount(account.id);
+      } else {
+        await authPost(create ? 'register' : 'sign-in',details);
+        state.auth.signedIn = true;
+        await changeWorkspace('live');
+      }
+      return;
+    }
+    if (form.id === 'composer') {
+      const id = state.active;
+      const draft = form.querySelector('#draft');
+      const text = draft.value.trim();
+      if (!text) return;
+      const retry = pendingMessages.get(id);
+      const messageId = retry?.text === text ? retry.id : crypto.randomUUID();
+      pendingMessages.set(id,{text,id:messageId});
+      await api('send',{thread:id,message:text,id:messageId});
+      pendingMessages.delete(id);
+      if (state.drafts.get(id)?.trim() === text) {
+        state.drafts.delete(id);
+        draft.value = '';
+      }
+      if (state.active === id) {
+        await loadMessages({forceBottom:true});
+        draft.focus();
+      }
+      await refresh();
+    }
+    if (form.id === 'new-thread-form') {
+      const result = await api('new-thread',{title:fields.get('title'),people:fields.getAll('person'),requestId:form.dataset.request});
+      modal.close();
+      state.active = result.id;
+      await refresh();
+      await selectThread(result.id);
+    }
+    if (form.id === 'event-form') {
+      const result = await api('event',{
+        id:form.dataset.id || undefined,requestId:form.dataset.request,title:fields.get('title'),starts_at:new Date(fields.get('start')).getTime(),
+        ends_at:new Date(fields.get('end')).getTime(),format:fields.get('format'),visibility:fields.get('visibility'),
+        reminder:Number(fields.get('reminder')),location:fields.get('location'),notes:fields.get('notes'),guests:fields.getAll('person'),
+      });
+      await refresh({full:state.page === 'calendar'});
+      showEvent(findEvent(result.id));
+      toast('Event saved.');
+    }
+    if (form.id === 'profile-form') {
+      const index = Number(form.querySelector('[data-intake]:not([hidden])').dataset.intake);
+      for (const input of form.querySelectorAll('[data-intake]:not([hidden]) input, [data-intake]:not([hidden]) select, [data-intake]:not([hidden]) textarea')) {
+        if (!input.reportValidity()) return;
+      }
+      if (index < 3) { showIntake(form,index+1); return; }
+      const onboarding = !mine()?.intake?.story;
+      await api('profile',Object.fromEntries(fields));
+      if (modal.open) modal.close();
+      if (onboarding) state.page = fields.get('role') === 'Mentor' ? 'messages' : 'people';
+      await refresh({full:true});
+      toast('Profile saved.');
+    }
+  } catch (error) { formError(form,error); }
+  finally { button.disabled = false; }
+});
+
+modal.addEventListener('click', event => {
+  if (event.target !== modal) return;
+  const bounds = modal.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) modal.close();
+});
+
+async function initialize() {
+  if (demoApi) {
+    const person = storage.get('tw.demo.session');
+    state.auth = {accounts:true,offline:true,signedIn:!!person,googleAvailable:false};
+    state.accountKind = 'register';
+    if (person) {
+      state.mode = 'demo';
+      state.as = person;
+    }
+  } else {
+    state.auth = await getAuthStatus();
+    if (state.auth?.accounts) {
+      state.mode = 'live';
+      const callback = new URLSearchParams(location.search).get('auth');
+      state.accountKind = callback ? 'sign-in' : 'register';
+      if (callback) {
+        state.accountNotice = googleNotices[callback] || '';
+        history.replaceState(null,'',location.pathname);
+      }
+    }
+  }
+  if (state.auth?.accounts && !state.auth.signedIn) {
+    await renderAccountGate();
+    return;
+  }
+  await refresh({full:true});
+  await loadMessages({mark:false,forceBottom:true});
+  if (state.accountNotice) toast(state.accountNotice);
+}
+try { await initialize(); }
+catch (error) {
+  if (state.auth?.offline && state.auth.signedIn) {
+    await accountSignOut();
+  } else {
+    app.innerHTML = `<main class="onboard" id="main"><section class="panel onboard-card"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTciIGZpbGw9IiNiY2E4ZmYiLz4KICA8cGF0aCBkPSJNMjQgMjIgMTMgMzJsMTEgMTBtMTYtMjAgMTEgMTAtMTEgMTBNMzYgMTlsLTggMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1MTczZiIgc3Ryb2tlLXdpZHRoPSI0LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" width="45" height="45" alt=""><h1>TechWomen AZ</h1><p>${esc(error.message)}</p>
+      ${error.status === 401 ? '<a class="button primary" href="/signin-with-chatgpt?return_to=%2F" target="_top">Sign in with ChatGPT</a>' : '<a class="button primary" href="/">Try again</a>'}</section></main>`;
+  }
+}
+let checking = false;
+setInterval(async () => {
+  if (document.hidden || !state.data || checking) return;
+  checking = true;
+  try {
+    await refresh();
+    await loadMessages({mark:!modal.open && (state.mobileThread || matchMedia('(min-width: 761px)').matches)});
+  } catch (error) {
+    if (state.auth?.accounts && !state.auth.offline && error.status === 401 && state.data) {
+      refreshCount++;
+      Object.assign(state,{data:null,active:null,messages:[],drafts:new Map(),accountKind:'sign-in',accountNotice:'Your session ended. Sign in again to continue.'});
+      state.auth.signedIn = false;
+      if (modal.open) modal.close();
+      await renderAccountGate();
+    } else updateBadges();
+  } finally {
+    checking = false;
+  }
+}, 5500);
+
+</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to workspace</a>
+  <div id="app"><div class="boot"><img src="/mark.svg" alt="" width="46" height="46"> Opening your workspace…</div></div>
+  <dialog id="modal" aria-labelledby="modal-title"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
